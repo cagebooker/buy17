@@ -1,0 +1,44 @@
+$blue: #6c5ce7;
+.style-1 {
+    background-color: $blue !important;
+    color: white !important;
+    &:hover{
+        color: #dfe6e9 !important;
+    }
+}
+.logo-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.footer {
+    position: fixed;
+    bottom: 0px;
+}
+.store-section{
+    width: 70%;
+}
+.stay-centered{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+.store-form{
+    max-width: 80%;
+}
+.box-mb{
+    margin-bottom: 40px;
+}
+.border{
+    border: 1px solid gray;
+}
+.card-fix{
+    position: absolute !important;
+    bottom: 50px;
+    left: 50px;
+}
+.out-relative{
+    position: relative;
+}
+.has-description{
+    max-width: 300px;
+}

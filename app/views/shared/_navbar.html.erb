@@ -1,0 +1,44 @@
+<nav class="navbar style-1" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item style-1" href="/">
+      <span class="logo-title " style="margin-right:6px;">17團購</span>
+      <i class="fa-solid fa-cart-shopping fa-xl"></i>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to '店家一覽', stores_path, class:'navbar-item style-1' %>
+
+      <a class="navbar-item style-1">
+        發起團購
+      </a>
+      <a class="navbar-item style-1">
+        歷史紀錄
+      </a>
+      <a class="navbar-item style-1">
+        訂閱
+      </a>  
+    
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button">
+            <strong>註冊</strong>
+          </a>
+          <a class="button is-light">
+            登入
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

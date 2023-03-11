@@ -1,0 +1,146 @@
+<section class="section ">
+  <div class="container">
+    <% @stores.each do |store| %>
+      <div class="card has-store store-section stay-centered">
+      
+        <div class="box-mb">
+            <div class="store-info ">
+                <div class="columns">
+                    <div class="column is-6">
+                        <%= link_to store_path(store) do%>
+                            <figure class="image is-3by2">
+                                <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                            </figure>
+                        <% end %>
+                    </div>
+                    <div class="column is-6">
+                        <div class="card-content has-border-right">
+                            <div class="media">
+                                <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                                </figure>
+                                </div>
+                                <div class="media-content">
+                                <%= link_to store.name, store_path(store), class:'title is-4' %> <br>
+                                <p class="subtitle is-6">@kevingu</p>
+                                </div>
+                            </div>
+                            <div class="content has-description">
+                                <%= store.description %>
+                            </div>
+                            <div class="content has-address">
+                                <%= store.address %>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-3">
+                                <div class="title is-4">$150</div>
+                                <div class="subtitle">最低價</div>
+                                </div>
+                                <div class="column is-3">
+                                <div class="title is-4">15</div>
+                                <div class="subtitle">項商品</div>
+                                </div>
+                                <div class="column is-6">
+                                <div class="title is-4"><%= store.phone %></div>
+                                <div class="subtitle">聯絡電話</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="store-menu">
+                <div class="titlebar has-text-centered style-1">Menu</div>
+
+                <div class="card-content">
+                <div class="columns is-multiline">
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="column is-4">
+                    <div class="card">
+                        <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                        </figure>
+                        </div>
+                        <div class="card-content">
+                        <div>紅茶拿鐵</div>
+                        <div class="title is-5">$150</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>      
+      
+      </div>
+    <% end %>
+  </div>
+</section>
