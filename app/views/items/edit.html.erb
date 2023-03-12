@@ -1,0 +1,41 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <div class="card">
+                    <div class="card-content">
+                    <h1 class="title is-5">更新菜單</h1>
+                    <%= form_for @item, url:store_item_path(@store, @item) do |f| %>
+                        <div class="field">
+                        <%= f.label :name, '名稱', class:'label' %>
+                        <div class="control">
+                            <%= f.text_field :name, class:'input' %>
+                        </div>
+                        </div>
+
+                        <div class="field">
+                        <%= f.label :price, '價格', class:'label' %>
+                        <div class="control">
+                            <%= f.number_field :price, class:'input' %>
+                        </div>
+                        </div>
+
+                        <div class="field">
+                        <%= f.label :logo, '圖片', class:'label' %>
+                        <div class="control">
+                            <%= f.file_field :logo %>
+                        </div>
+                        </div>
+
+                        <div class="field">
+                            <%= f.submit '確定',class:'button style-1' %>
+                            <%= link_to '刪除', store_item_path(@store,@item), method: :delete, data: {confirm:'確定要刪除菜單嗎？'}, class:'button is-light'  %>
+                        </div>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>

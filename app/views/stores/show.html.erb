@@ -41,17 +41,19 @@
     <div class="columns">
       <div class="column is-7">
         <div class="columns is-multiline">
-          <% 6.times do %>
+          <% @store.items.each do |item| %>
             <div class="column is-4">
               <div class="card">
                 <div class="card-image">
-                  <figure class="image is-2by1">
-                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                  </figure>
+                  <%= link_to edit_store_item_path(@store, item) do %>
+                    <figure class="image is-2by1">
+                      <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                    </figure>
+                  <% end %>
                 </div>
                 <div class="card-content">
-                  <div>還是紅茶拿鐵</div>
-                  <div class="title is-4">$100</div>
+                  <div><%= item.name %></div>
+                  <div class="title is-4">$<%= item.price %></div>
                 </div>
               </div>
             </div>
@@ -62,33 +64,32 @@
         <div class="card">
           <div class="card-content">
             <h1 class="title is-5">新增菜單</h1>
-
-            <form>
+            <%= form_for Item.new, url:store_items_path(@store) do |f| %>
               <div class="field">
-                <label class="label">名稱</label>
+                <%= f.label :name, '名稱', class:'label' %>
                 <div class="control">
-                  <input class="input" type="text">
+                  <%= f.text_field :name, class:'input' %>
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">價格</label>
+                <%= f.label :price, '價格', class:'label' %>
                 <div class="control">
-                  <input class="input" type="number"
+                  <%= f.text_field :price, class:'input' %>
                 </div>
               </div>
 
               <div class="field">
-                <label class="label">圖片</label>
+                <%= f.label :logo, '圖片', class:'label' %>
                 <div class="control">
-                  <input class="input" type="file">
+                  <%= f.file_field :logo %>
                 </div>
               </div>
 
               <div class="field">
-                <input type="submit" value="確定" class="button is-primary is-medium is-fullwidth">
+                <%= f.submit '確定',class:'button style-1 is-medium is-fullwidth' %>
               </div>
-            </form>
+            <% end %>
           </div>
         </div>
       </div>
