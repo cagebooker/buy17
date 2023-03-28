@@ -1,0 +1,85 @@
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <div>您正在由 <%= @purchase.user.email %>發起的團購中，團購截止時間為 <%= @purchase.end_time.strftime('%m/%d/%H:%M') %>
+      <% if (@purchase.end_time>Time.now) %>
+        <%= time_ago_in_words(@purchase.end_time) %>
+      <% else %>
+        <span>時間已經截止了</span>
+      <% end %>
+    </div> 
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6">
+            <h1 class="title is-4">菜單</h1>
+            <% @purchase.store.items.each do|item| %>
+              
+              <div class="box is-fullwidth">
+                <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                <%= item.name %> $<%= item.price %>
+
+              </div>
+              
+            <% end %>
+
+          </div>
+
+          <div class="column is-6">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4"><%= @purchase.store.name %></p>
+                    <p class="subtitle is-6">@johnsmith</p>
+                  </div>
+                </div>
+                <div class="content has-description">
+                  <%= @purchase.store.description %>
+                </div>
+                <div class="content">
+                  地址：<%= @purchase.store.address %><br>
+                  電話：<%= @purchase.store.phone %>
+                </div>
+                <h1 class="title is-5">購物列表</h1>
+
+                <%= form_for [@purchase, @order] do |f| %>
+                  <%= f.fields_for :ordered_items do |item_form| %>
+                    <%= render 'ordered_item_fields', f: item_form %>
+                  <% end %>
+                  <div class="field">
+                    <%= link_to_add_association '新增商品',f, :ordered_items, class:'button is-success is-outlined' %>
+                  </div>
+
+                  <div class="field">
+                    <input type="submit" value="確定" class="button style-1 is-medium is-fullwidth">
+                  </div>
+                <% end %>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box">
+          <% @purchase.orders.each do |order| %>
+            <% order.ordered_items.each do |order_item| %>
+              <%= order_item.item.name %> x
+              <%= order_item.quantity %>
+            <% end %>          
+
+            <span>
+              金額：
+              <%= order.total_price %>
+                
+            </span> 
+          <% end %>
+          
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="outsider">
+    <div class="columns">
+        <div class="column is-3 ">
+            <%= link_to '#', class:'btn style-1' do %>
+                <i class="fa-solid fa-user-group icon-fix"></i>
+                <span> 群組</span>
+            <% end %>
+            <%= link_to new_group_path, class:'btn' do %>
+                <i class="fa-regular fa-plus icon-fix"></i>
+                <span>建立新群組</span>
+            <% end %>
+            
+            <a href="" class="btn">1</a>
+            <a href="" class="btn">2</a>
+            <div class="divider"></div>
+
+        </div>
+        <div class="column is-8 is-offset-1 ">
+            <div class="columns is-multiline">
+                    <% current_user.groups.each do |g| %>
+                        <div class="column is-4">
+                        <div class="group-container ">
+                            <div class="group-title">
+                                <span class="image-fix">
+                                    <img src="http://via.placeholder.com/24x24" alt="placeholder">
+                                </span>
+                                
+                                <span><%= g.name %></span>
+            
+                            </div>
+                            <div class="group-content">
+                                <%= link_to group_stores_path(g.id) do  %>
+                                    <img src="http://via.placeholder.com/188x108" alt="placeholder">
+                                <% end %>
+                                
+                            </div>
+                        </div>    
+                        </div>
+                    <% end %>
+                
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+

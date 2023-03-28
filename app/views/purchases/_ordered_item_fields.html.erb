@@ -1,0 +1,25 @@
+<div class="nested-fields">
+    <div class="field is-horizontal">
+       <div class="field-body">
+            <div class="field">
+                <div class="control">
+                <span class="select">
+                    <%= f.collection_select :item_id, @purchase.store.items, :id, :name %>
+                </span>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                <%= f.number_field :quantity, class:'input' %>
+                </div>
+            </div>
+            <div class="field has-remove-button">
+                <%= link_to_remove_association f, class:'icon is-danger' do %>
+                    <i class="fa fa-times"></i>
+                <% end %>
+                
+            </div>
+       </div>    
+    </div>
+    
+</div>

@@ -1,0 +1,79 @@
+<div class="outsider">
+  <div class="columns">
+    <div class="column">
+      <% @allStores.each do |store| %>
+        <div class="card store-section stay-centered">
+            <div class="box-mb">
+                <div class="store-info ">
+                  <div class="card-content has-border-right">
+                      <div class="media">
+                          <div class="media-left">
+                          <figure class="image is-48x48">
+                              <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                          </figure>
+                          </div>
+                          <div class="media-content">
+                          <%= link_to store.name, '#', class:'title is-5' %> <br>
+                          <p class="subtitle is-6">@kevingu</p>
+                          </div>
+                           <div class="media-right">
+                          <%= link_to '#',class:'subtitle is-6 btn' do %>
+                            <span>加入群組清單 </span>&nbsp&nbsp    
+                            <i class="fa-solid fa-plus "></i>
+                          
+                          <% end %>
+                          
+                          </div>
+                      </div>
+                      <div class="content">
+                          <%= store.description.truncate(50) %>
+                      </div>
+                      <div class="columns">
+                          <div class="column is-2">
+                          <div class="title is-6">$150</div>
+                          <div class="subtitle is-6">最低價</div>
+                          </div>
+                          <div class="column is-2">
+                          <div class="title is-6">15</div>
+                          <div class="subtitle is-6">項商品</div>
+                          </div>
+                          <div class="column is-4">
+                          <div class="title is-6"><%= store.phone %></div>
+                          <div class="subtitle is-6">聯絡電話</div>
+                          </div>
+                          <div class="column is-4">
+                          <div class="title is-6"><%= store.address %></div>
+                          <div class="subtitle is-6">地址</div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="store-menu">
+                    <div class="titlebar has-text-centered style-1">Menu</div>
+
+                    <div class="card-content">
+                        <div class="columns is-multiline">
+                            <% store.items.each do |item| %>
+                                <div class="column is-4">
+                                    <div class="card">
+                                        <div class="card-image">
+                                        <figure class="image is-4by3">
+                                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                                        </figure>
+                                        </div>
+                                        <div class="card-content">
+                                        <div><%= item.name %></div>
+                                        <div class="title is-5">$<%= item.price %></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

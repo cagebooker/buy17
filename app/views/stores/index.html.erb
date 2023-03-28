@@ -1,146 +1,98 @@
-<section class="section ">
-  <div class="container">
-    <% @stores.each do |store| %>
-      <div class="card has-store store-section stay-centered">
-      
-        <div class="box-mb">
-            <div class="store-info ">
-                <div class="columns">
-                    <div class="column is-6">
-                        <%= link_to store_path(store) do%>
-                            <figure class="image is-3by2">
-                                <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                            </figure>
-                        <% end %>
-                    </div>
-                    <div class="column is-6">
-                        <div class="card-content has-border-right">
-                            <div class="media">
-                                <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="http://via.placeholder.com/48x48" alt="placeholder">
-                                </figure>
-                                </div>
-                                <div class="media-content">
-                                <%= link_to store.name, store_path(store), class:'title is-4' %> <br>
-                                <p class="subtitle is-6">@kevingu</p>
-                                </div>
-                            </div>
-                            <div class="content has-description">
-                                <%= store.description %>
-                            </div>
-                            <div class="content has-address">
-                                <%= store.address %>
-                            </div>
-                            <div class="columns">
-                                <div class="column is-3">
-                                <div class="title is-4">$150</div>
-                                <div class="subtitle">最低價</div>
-                                </div>
-                                <div class="column is-3">
-                                <div class="title is-4">15</div>
-                                <div class="subtitle">項商品</div>
-                                </div>
-                                <div class="column is-6">
-                                <div class="title is-4"><%= store.phone %></div>
-                                <div class="subtitle">聯絡電話</div>
+<div class="outsider">
+    <div class="columns">
+        <div class="column is-9">
+            <% @stores.each do |store| %>
+                <div class="card store-section stay-centered">
+                    <div class="box-mb">
+                        <div class="store-info ">
+                            <div class="">
+                                <div class="card-content has-border-right">
+                                    <div class="media">
+                                        <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                                        </figure>
+                                        </div>
+                                        <div class="media-content">
+                                        <%= link_to store.name, group_store_path(@group,store), class:'title is-5' %> <br>
+                                        <p class="subtitle is-6">@kevingu</p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="content">
+                                        <%= store.description.truncate(50) %>
+                                    </div>
+                                    <div class="columns">
+                                        <div class="column is-2">
+                                        <div class="title is-6">$150</div>
+                                        <div class="subtitle is-6">最低價</div>
+                                        </div>
+                                        <div class="column is-2">
+                                        <div class="title is-6">15</div>
+                                        <div class="subtitle is-6">項商品</div>
+                                        </div>
+                                        <div class="column is-4">
+                                        <div class="title is-6"><%= store.phone %></div>
+                                        <div class="subtitle is-6">聯絡電話</div>
+                                        </div>
+                                        <div class="column is-4">
+                                        <div class="title is-6"><%= store.address %></div>
+                                        <div class="subtitle is-6">地址</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+          
                         </div>
-                    </div>
-                </div>
-                
-                
-            </div>
-            <div class="store-menu">
-                <div class="titlebar has-text-centered style-1">Menu</div>
+                        <div class="store-menu">
+                            <div class="titlebar has-text-centered style-1">Menu</div>
 
-                <div class="card-content">
-                <div class="columns is-multiline">
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
+                            <div class="card-content">
+                                <div class="columns is-multiline">
+                                    <% store.items.each do |item| %>
+                                        <div class="column is-4">
+                                            <div class="card">
+                                                <div class="card-image">
+                                                <figure class="image is-4by3">
+                                                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                                                </figure>
+                                                </div>
+                                                <div class="card-content">
+                                                <div><%= item.name %></div>
+                                                <div class="title is-5">$<%= item.price %></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                        </figure>
-                        </div>
-                        <div class="card-content">
-                        <div>紅茶拿鐵</div>
-                        <div class="title is-5">$150</div>
-                        </div>
-                    </div>
-                    </div>
+                    </div>      
                 </div>
-                </div>
+            <% end %>
+        </div>
+        <div class="column is-3">
+            <div class="title is-4 title-style-1">
+                群組：<%= @group.name  %>
             </div>
-        </div>      
-      
-      </div>
-    <% end %>
-  </div>
-</section>
+            <div class="divider"></div>
+            <%= link_to purchases_path,class:'btn style-1' do  %>
+                正在進行的團購！
+            <% end %>
+            <%= link_to '#',class:'btn' do  %>
+                歷史訂單
+            <% end %>
+            <%= link_to '#',class:'btn' do  %>
+                成員(2)
+            <% end %>
+            <%= link_to new_purchase_path,class:'btn' do  %>
+                開啟新團購
+            <% end %>
+            <%= link_to edit_group_path(@group),class:'btn' do  %>
+                設定群組
+            <% end %>
+            
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="outsider">
+  <div class="columns">
+    <div class="column is-4 is-offset-4">
+      <div class="card">
+          <div class="card-content">
+            
+            <div class="title is-4 title-style-1">
+              管理群組
+            </div>
+            <%= render 'form' %> 
+            <div class="">
+            <%= link_to '解散這個群組', group_path(@group), method: :delete,class:'button is-small is-fullwidth mt-2', data:{confirm:"確定要解散這個群租嗎？"} %>
+            </div>
+            
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

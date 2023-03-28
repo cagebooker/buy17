@@ -14,11 +14,9 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to '店家一覽', stores_path, class:'navbar-item style-1' %>
-
-      <a class="navbar-item style-1">
-        發起團購
-      </a>
+      <%= link_to '店家一覽', '/stores', class:'navbar-item style-1' %>
+      <%= link_to '發起團購', new_purchase_path, class:'navbar-item is-tab style-1' %>
+      <%= link_to '團購中 !', purchases_path, class:'navbar-item is-tab style-2' %>
       <a class="navbar-item style-1">
         歷史紀錄
       </a>
@@ -31,12 +29,41 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button">
-            <strong>註冊</strong>
-          </a>
-          <a class="button is-light">
-            登入
-          </a>
+          <% if user_signed_in? %>
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span><%= current_user.email %></span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <%= link_to '個人資料修改', edit_user_registration_path,class:'dropdown-item' %>
+                  <a class="dropdown-item">
+                    Other dropdown item
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    Active dropdown item
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    Other dropdown item
+                  </a>
+                  <hr class="dropdown-divider">
+                  <% if user_signed_in? %>
+                    <%= link_to '登出', destroy_user_session_path, method: :delete, class:'dropdown-item'  %>
+                  <% else %>
+                    
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to '登入', new_user_session_path, class:'button'  %>
+            <%= link_to '註冊', new_user_registration_path, class:'button'  %>
+          <% end %>
         </div>
       </div>
     </div>

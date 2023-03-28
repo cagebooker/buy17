@@ -1,0 +1,12 @@
+<%= form_for @group do |f| %>
+    <div class="field">
+        <%= f.label :name, '群組名稱',class:'label' %>
+        <div class="control">
+            <%= f.text_field :name ,class:'input' %>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="field">
+        <%= f.submit '送出', class:'button is-small style-1 is-fullwidth' %>
+    </div>
+<% end %>  

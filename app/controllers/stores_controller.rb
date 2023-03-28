@@ -1,7 +1,11 @@
 class StoresController < ApplicationController
     before_action :set_store, only: [:show, :edit, :destroy ,:update]
-    def index
-        @stores = Store.all
+    before_action :set_group, only: [:index, :show, :edit, :destroy ,:update]
+    def total
+        @allStores = Store.all
+    end
+    def index 
+        @stores = @group.stores.includes(:items)
     end
     
     def new
@@ -30,6 +34,9 @@ class StoresController < ApplicationController
         redirect_to stores_path, :notice => 'Store was successfully destroyed.'
     end
     private
+    def set_group 
+        @group = Group.find(params[:group_id])
+    end
     def set_store 
         @store = Store.find(params[:id])
     end
