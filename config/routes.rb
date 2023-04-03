@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/groups/:id/store/:id/set_store' => 'stores#set', as: 'set_group_store'
 
   get 'groups/:id/purchases/done' => 'purchases#done', as: 'purchases_done'
+  post 'groups/:id/purchases/:id/finished' => 'purchases#finished', as: 'purchase_finished'
 
   namespace :admin do 
     resources :stores do 

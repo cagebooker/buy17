@@ -8,6 +8,12 @@ $yellow: #fdcb6e;
     transform: translateX(-50%);
     top: 40px;
 }
+.state-p{
+    color: white;
+    background-color: rgb(59, 220, 166);
+    border-radius: 3px;
+    padding: 2px 4px;
+}
 .style-3{
     background-color: rgba($color: #2b2b2b, $alpha: 1.0) !important;
     color: white !important;
@@ -51,7 +57,7 @@ $yellow: #fdcb6e;
     margin-right: 3rem;
 }
 .mb-2{
-    margin-bottom: 3rem;
+    margin-bottom: 3rem !important;
 }
 .btn{
     width: 100%;

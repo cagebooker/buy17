@@ -31,6 +31,9 @@ gem 'devise', '~> 4.9'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# state machine
+gem 'aasm', '~> 5.5'
+
 #form
 gem 'cocoon'
 

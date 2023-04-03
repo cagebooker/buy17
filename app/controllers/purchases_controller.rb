@@ -23,6 +23,11 @@ class PurchasesController < ApplicationController
     def done 
         @purchases = @group.purchases.where("end_time < ?", Time.now)
     end
+    def finished
+        @purchase = Purchase.find(params[:purchase_id])
+        @purchase.finish!
+        redirect_to admin_stores_path
+    end
     private
     def purchase_params
         params.require(:purchase).permit(:time_period, :store_id, :end_time)

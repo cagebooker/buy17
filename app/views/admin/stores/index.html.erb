@@ -41,16 +41,23 @@
       
     </div>
     <div class="column is-6">
-       <div class="title is-5">
-        您的訂單：
+       <div class="title is-5 mb-2">
+        您的訂單:
        </div>
        <div class="box">
-        今日未完成訂單：
+        今日未完成訂單： 
         <% @stores.each do |store| %>
           <% store.purchases.each do |purchase| %>
             <div class="box">
-              <%= store.name %> <br>
-              訂單編號： <%= purchase.id %>，  訂購人： <%= purchase.user.email %>
+              <%= store.name %> | 
+              
+              <% if purchase.state == 'pending' %>
+                <span class="state-p">等待中</span>
+              <% else %>
+                <span class="state-p">已完成</span>
+              <% end %>
+              <br>
+              訂單編號： <%= purchase.id %>,  訂購人： <%= purchase.user.email %>
               <% purchase.orders.each do |order| %>
                 <% order.ordered_items.each do |order_item| %>
                   <br>
@@ -59,7 +66,7 @@
                 <% end %>  
              <% end %>
              <br>
-             <%= link_to '完成訂單','#',class:'button is-small is-fullwidth' %>
+             <%= link_to '完成訂單',purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
             </div>
             
           <% end %>
