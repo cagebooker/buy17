@@ -29,34 +29,27 @@
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
-                    <figure class="image is-48x48">
-                      <img src="http://via.placeholder.com/48x48" alt="placeholder">
-                    </figure>
+                    
                   </div>
                   <div class="media-content">
-                    <p class="title is-4"><%= @purchase.store.name %></p>
-                    <p class="subtitle is-6">@johnsmith</p>
+                    <p class="title is-4">店家：<%= @purchase.store.name %></p>
                   </div>
                 </div>
-                <div class="content has-description">
-                  <%= @purchase.store.description %>
-                </div>
-                <div class="content">
-                  地址：<%= @purchase.store.address %><br>
-                  電話：<%= @purchase.store.phone %>
-                </div>
-                <h1 class="title is-5">購物列表</h1>
+                
+                <h1 class="title is-5">您的購物清單</h1>
 
                 <%= form_for [@purchase, @order] do |f| %>
                   <%= f.fields_for :ordered_items do |item_form| %>
                     <%= render 'ordered_item_fields', f: item_form %>
                   <% end %>
                   <div class="field">
-                    <%= link_to_add_association '新增商品',f, :ordered_items, class:'button is-success is-outlined' %>
+                    <%= link_to_add_association '點餐',f,:ordered_items, class:'button is-success is-outlined' %>
+        
+                    
                   </div>
 
                   <div class="field">
-                    <input type="submit" value="確定" class="button style-1 is-medium is-fullwidth">
+                    <input type="submit" value="確定" class="button style-1  is-fullwidth">
                   </div>
                 <% end %>
                 

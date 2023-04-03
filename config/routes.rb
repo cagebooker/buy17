@@ -5,17 +5,22 @@ Rails.application.routes.draw do
   root 'groups#index'
 
   get '/stores' => 'stores#total'
+  post '/groups/:id/store/:id/set_store' => 'stores#set', as: 'set_group_store'
+
+  get 'groups/:id/purchases/done' => 'purchases#done', as: 'purchases_done'
 
   namespace :admin do 
     resources :stores do 
       resources :items
+
     end
   end
 
   resources :groups do 
     resources :stores do
       # resources :items
-    end  
+    end
+    resources :purchases, only: [:new,:create]
   end
   
   resources :purchases do

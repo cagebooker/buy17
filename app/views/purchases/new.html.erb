@@ -5,7 +5,7 @@
             <div class="column is-4 is-offset-4">
                 <h1 class="title is-4">提議</h1>
                 <div class="box">
-                    <%= form_for @purchase do |f| %>
+                    <%= form_for [@group,@purchase] do |f| %>
                         <div class="field">
                             <%= f.label :time_perid,'時段', class:'label' %>
                             <div class="control">

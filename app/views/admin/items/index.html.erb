@@ -10,8 +10,11 @@
               <div class="box">
                 <span class="title is-6"><%= item.name %></span>
                 <span class="title is-6">$ <%= item.price %></span>
-
-                <i class="fa-solid fa-xmark"></i>
+                
+                <%= link_to '#',data:{confirm:'確定要刪除這個菜單嗎？'} do  %>
+                  <i class="fa-solid fa-xmark"></i>
+                
+                <% end %>
               </div>
             </div>
           <% end %>
@@ -22,7 +25,7 @@
       <div class="column is-6 ">
           <div class="card">
               <div class="card-content">
-              <h1 class="title is-5">更新菜單</h1>
+              <h1 class="title is-5">新增菜單</h1>
                 <%= form_for Item.new, url:admin_store_items_path(@store) do |f| %>
                   <div class="field">
                     <%= f.label :name, '名稱', class:'label' %>
@@ -47,6 +50,9 @@
 
                   <div class="field">
                     <%= f.submit '確定',class:'button style-1 is-fullwidth' %>
+                  </div>
+                  <div class="field">
+                    <%= link_to "返回上一页", :back %>
                   </div>
                 <% end %>
               </div>

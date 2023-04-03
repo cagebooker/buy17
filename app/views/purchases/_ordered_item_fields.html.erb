@@ -1,5 +1,5 @@
 <div class="nested-fields">
-    <div class="field is-horizontal">
+    <div class="field is-horizontal mb-2">
        <div class="field-body">
             <div class="field">
                 <div class="control">
@@ -14,9 +14,13 @@
                 </div>
             </div>
             <div class="field has-remove-button">
-                <%= link_to_remove_association f, class:'icon is-danger' do %>
-                    <i class="fa fa-times"></i>
-                <% end %>
+
+                <span class="icon is-danger">
+                    <%= link_to_remove_association f do%>
+                     <i class="fa fa-times"></i>
+                    <% end %>
+                    
+                </span>
                 
             </div>
        </div>    

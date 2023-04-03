@@ -49,12 +49,14 @@
         </div>
         <div class="field">
             <%= f.submit '送出', class:'button style-1 is-fullwidth' %>
+            
         </div>
         <div class="field">
             <%= link_to admin_store_items_path(@store),class:'button' do %>
-              <span>修改菜單</span>
+              <span>管理菜單</span>
             <% end %>
-            
+            <%= link_to "返回上一页", :back ,class:'button' %>
+            <%= link_to '關閉店家','#',class:'button' %>
         </div>
     </div>
     </div>

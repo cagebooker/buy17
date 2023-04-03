@@ -1,8 +1,8 @@
 <div class="outsider">
   <div class="columns">
-    <div class="column">
+    <div class="column is-9">
       <% @allStores.each do |store| %>
-        <div class="card store-section stay-centered">
+        <div class="card store-section stay-centered zindex-l">
             <div class="box-mb">
                 <div class="store-info ">
                   <div class="card-content has-border-right">
@@ -16,13 +16,24 @@
                           <%= link_to store.name, '#', class:'title is-5' %> <br>
                           <p class="subtitle is-6">@kevingu</p>
                           </div>
-                           <div class="media-right">
-                          <%= link_to '#',class:'subtitle is-6 btn' do %>
-                            <span>加入群組清單 </span>&nbsp&nbsp    
-                            <i class="fa-solid fa-plus "></i>
-                          
-                          <% end %>
-                          
+                          <div class="media-right">
+                            <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                     <span>加入群組清單 </span>&nbsp&nbsp    
+                                    <i class="fa-solid fa-plus "></i>
+                                    
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                    <% current_user.groups.each do |group| %>
+                                        <%= link_to group.name, set_group_store_path(group,store,group_id: group.id, store_id: store.id), method: :post, class:'dropdown-item'  %>
+                                    <% end %>
+                            
+                                </div>
+                            </div>
+                            </div>       
                           </div>
                       </div>
                       <div class="content">
@@ -48,32 +59,43 @@
                       </div>
                   </div>
                 </div>
-                <div class="store-menu">
-                    <div class="titlebar has-text-centered style-1">Menu</div>
-
-                    <div class="card-content">
-                        <div class="columns is-multiline">
-                            <% store.items.each do |item| %>
-                                <div class="column is-4">
-                                    <div class="card">
-                                        <div class="card-image">
-                                        <figure class="image is-4by3">
-                                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                                        </figure>
-                                        </div>
-                                        <div class="card-content">
-                                        <div><%= item.name %></div>
-                                        <div class="title is-5">$<%= item.price %></div>
-                                        </div>
+                <div class="store-menu ">
+                    <div class="dropdown is-up is-hoverable has-text-centered titlebar dp-btn style-1 is-fullwidth ">
+                        <div class="dropdown-trigger">
+                            <div class="titlebar  style-1 flex" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                <p class="">
+                                    Menu
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-up" aria-hidden="true"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                            <div class="dropdown-content dropdown-fix">
+                                <span class=" dropdown-item" style="font-weight:bold">菜單：</span>
+                                <% store.items.each do |item| %>
+                                    <div class=" dropdown-item">
+                                        <div><%= item.name %> $<%= item.price %></div>
                                     </div>
-                                </div>
-                            <% end %>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>      
         </div>
       <% end %>
+    </div>
+    <div class="column is-3">
+        <div class="title is-5">
+            回到你的群組：
+        </div>
+        <% current_user.groups.each do |group| %>
+            <%= link_to group.name, group_stores_path(group),class:'btn' %>
+        <% end %>
+        
     </div>
   </div>
 </div>

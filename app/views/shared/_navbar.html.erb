@@ -23,7 +23,6 @@
       <a class="navbar-item style-1">
         訂閱
       </a>  
-    
     </div>
 
     <div class="navbar-end">
@@ -42,9 +41,8 @@
               <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                   <%= link_to '個人資料修改', edit_user_registration_path,class:'dropdown-item' %>
-                  <a class="dropdown-item">
-                    Other dropdown item
-                  </a>
+                  <%= link_to '切換至商家', admin_stores_path, class:'dropdown-item' %>
+                  
                   <a href="#" class="dropdown-item">
                     Active dropdown item
                   </a>

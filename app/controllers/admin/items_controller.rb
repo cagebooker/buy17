@@ -12,11 +12,18 @@ class Admin::ItemsController < ApplicationController
         render 'stores/show'
     end
   end
+  def destroy
+    @item.destroy
+    redirect_to store_path(@store), notice: 'Item was successfully destroyed.'
+  end
   private
   def item_params
     params.require(:item).permit(:name, :price)
   end
   def set_store
     @store = Store.find(params[:store_id])
+  end
+  def set_item
+    
   end
 end
