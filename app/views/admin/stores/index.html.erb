@@ -1,7 +1,7 @@
 <div class="outsider">
   <div class="columns">
     <div class="column is-6">
-      <div class="title is-5">您的店家</div>
+      <div class="title is-5">您管理的店家：</div>
       <% if @stores.present? %>
         <% @stores.each do |store| %>
           <div class="card columns">
@@ -34,6 +34,7 @@
           </div>
           <br>
         <% end %>  
+        
       <% else %>
         <%= link_to '開始你的店家', new_admin_store_path, class:'button' %>
       <% end %>
@@ -42,17 +43,17 @@
     </div>
     <div class="column is-6">
        <div class="title is-5 mb-2">
-        您的訂單:
+        您的訂單：
        </div>
-       <div class="box">
-        今日未完成訂單： 
-        <% @stores.each do |store| %>
-          <% store.purchases.each do |purchase| %>
-            <div class="box">
-              <%= store.name %> | 
+       <div class="box height-fix-1">
+        今日(<%= Time.now.strftime("%Y/%m/%d") %>)未完成訂單： 
+        <% @purchases_pending.each do |purchase| %>
+          <div class="box">
+              <%= purchase.store.name %> | 
               
               <% if purchase.state == 'pending' %>
                 <span class="state-p">等待中</span>
+                | 訂單送出時間：<%= purchase.end_time.strftime("%m/%d %I:%M") %>
               <% else %>
                 <span class="state-p">已完成</span>
               <% end %>
@@ -66,25 +67,30 @@
                 <% end %>  
              <% end %>
              <br>
-             <%= link_to '完成訂單',purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
-            </div>
+             <div class="columns mt-2">
+              <div class="column is-9">
+                <%= link_to '完成訂單',purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
+              </div>
+              <div class="column is-3">
+                <%= link_to '空單取消',purchase_refunded_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
+              </div>
+             </div>
+             
             
-          <% end %>
-          
+            </div>
         <% end %>
         
+       
+        
        </div>
-       <div class="box">
+       <div class="box height-fix-2">
         今日已完成訂單：
-        <% @stores.each do |store| %>
-          <% store.purchases.each do |purchase| %>
-            <div class="box">
-              <span>訂單編號： <%= purchase.id %></span>
-              <span>總金額： <%= purchase.total_income %></span>
-            </div>
-          
-          <% end %>
-          
+        <% @purchases_done.each do |purchase| %>
+          <div class="box">
+            <span class="state-f">已完成</span>
+            <span>訂單編號： <%= purchase.id %></span>
+            <span>總金額： <%= purchase.total_income %></span>
+          </div>
         <% end %>
         
        </div>

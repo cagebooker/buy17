@@ -1,7 +1,9 @@
-<section class="section purchases-section">
-  <div class="container">
-    <h1 class="title is-4">所有團購</h1>
-
+<div class="outsider">
+  <h1 class="title is-4">
+    所有團購
+    <%= link_to '回到群組', group_stores_path, class:'button is-small ml-2' %>
+  </h1>
+  <% if @purchases.present? %>
     <div class="columns is-multiline">
       <% @purchases.each do |purchase| %>
         <div class="column is-4">
@@ -49,5 +51,14 @@
         </div>
       <% end %>
     </div>
-  </div>
-</section>
+  <% else %>
+    <div class="title is-6">目前沒有進行中的團購喔...</div>
+    <%= link_to new_group_purchase_path,class:'button is-small' do  %>
+      開啟新團購
+    <% end %>
+  <% end %>
+  
+  
+
+</div>
+    

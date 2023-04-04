@@ -3,31 +3,55 @@
   <div class="columns is-multiline">
     <% @purchases.each do |purchase| %>
       <div class="column is-4">
-        <div class="card">
-          <div class="card-image">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content mr-2">
-                  <%= link_to purchase_path(purchase),class:'mb-2' do %>
-                    <p class="title is-5"><%= purchase.store.name %></p>
-                  <% end %>
-                  
-                  <%= link_to '#',class:'button is-small is-fullwidth mt-2' do %>
-                    <p>明細</p>
-                  <% end %>
-                  
-                </div>
-                
-              
-                <div class="media-content">
-                  <div class="">總金額：$xxx </div>
-                  <div class="">Ｘ人團購</div>
-                  <div class="">團購日期：<%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+        <% if purchase.state == 'finished' %>
+          <div class="card">
+            <div class="card-image">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content mr-2">
+                    <%= link_to purchase_path(purchase),class:'mb-2' do %>
+                      <p class="title is-5">
+                        <%= purchase.store.name %> 
+                      </p>
+                    <% end %>
+                    
+                    <%= link_to '明細', '#', class:'button is-small is-fullwidth mt-2' %>
+                  </div>
+                  <div class="media-content">
+                    <span class="state-f mt-2">訂單完成</span>
+                    <div class="">總金額：$ <%= purchase.total_income %> </div>
+                    <div class="">日期：<%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        <% elsif purchase.state == 'pending' %>
+        <% else %>
+          <div class="card">
+            <div class="card-image">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content mr-2">
+                    <%= link_to purchase_path(purchase),class:'mb-2' do %>
+                      <p class="title is-5">
+                        <%= purchase.store.name %> 
+                      </p>
+                    <% end %>
+                    
+                  </div>
+                  <div class="media-content">
+                    <span class="state-r mt-2">
+                      訂單退回
+                    </span>
+                    <div class="">總金額：$ <%= purchase.total_income %> </div>
+                    <div class="">日期：<%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

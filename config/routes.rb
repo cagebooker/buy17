@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'groups/:id/purchases/done' => 'purchases#done', as: 'purchases_done'
   post 'groups/:id/purchases/:id/finished' => 'purchases#finished', as: 'purchase_finished'
+  post 'groups/:id/purchases/:id/refunded' => 'purchases#refunded', as: 'purchase_refunded'
 
   namespace :admin do 
     resources :stores do 
@@ -21,7 +22,8 @@ Rails.application.routes.draw do
     resources :stores do
       # resources :items
     end
-    resources :purchases, only: [:new,:create]
+    resources :purchases, only: [:new,:create,:index]
+    
   end
   
   resources :purchases do

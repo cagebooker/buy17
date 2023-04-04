@@ -1,50 +1,47 @@
 <div class="outsider">
     <div class="columns">
         <div class="column is-9">
-            <div class="title is-4">您的店家</div>
+            <div class="title is-4 left-fix-1">您的店家</div>
             <% if @stores.present? %>
                 <% @stores.each do |store| %>
                     <div class="card store-section stay-centered">
                         <div class="box-mb">
                             <div class="store-info ">
-                                <div class="">
-                                    <div class="card-content has-border-right">
-                                        <div class="media">
-                                            <div class="media-left">
-                                            <figure class="image is-48x48">
-                                                <img src="http://via.placeholder.com/48x48" alt="placeholder">
-                                            </figure>
-                                            </div>
-                                            <div class="media-content">
-                                            <%= link_to store.name, group_store_path(@group,store), class:'title is-5' %> <br>
-                                            <p class="subtitle is-6">@kevingu</p>
-                                            </div>
-                                            
+                                <div class="card-content has-border-right">
+                                    <div class="media">
+                                        <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                                        </figure>
                                         </div>
-                                        <div class="content">
-                                            <%= store.description.truncate(50) %>
+                                        <div class="media-content">
+                                        <%= link_to store.name, group_store_path(@group,store), class:'title is-5' %> <br>
+                                        <p class="subtitle is-6">@kevingu</p>
                                         </div>
-                                        <div class="columns">
-                                            <div class="column is-2">
-                                            <div class="title is-6">$150</div>
-                                            <div class="subtitle is-6">最低價</div>
-                                            </div>
-                                            <div class="column is-2">
-                                            <div class="title is-6">15</div>
-                                            <div class="subtitle is-6">項商品</div>
-                                            </div>
-                                            <div class="column is-4">
-                                            <div class="title is-6"><%= store.phone %></div>
-                                            <div class="subtitle is-6">聯絡電話</div>
-                                            </div>
-                                            <div class="column is-4">
-                                            <div class="title is-6"><%= store.address %></div>
-                                            <div class="subtitle is-6">地址</div>
-                                            </div>
+                                        
+                                    </div>
+                                    <div class="content">
+                                        <%= store.description.truncate(50) %>
+                                    </div>
+                                    <div class="columns">
+                                        <div class="column is-2">
+                                        <div class="title is-6">$150</div>
+                                        <div class="subtitle is-6">最低價</div>
+                                        </div>
+                                        <div class="column is-2">
+                                        <div class="title is-6">15</div>
+                                        <div class="subtitle is-6">項商品</div>
+                                        </div>
+                                        <div class="column is-4">
+                                        <div class="title is-6"><%= store.phone %></div>
+                                        <div class="subtitle is-6">聯絡電話</div>
+                                        </div>
+                                        <div class="column is-4">
+                                        <div class="title is-6"><%= store.address %></div>
+                                        <div class="subtitle is-6">地址</div>
                                         </div>
                                     </div>
                                 </div>
-            
                             </div>
                             <div class="store-menu">
                                 <div class="titlebar has-text-centered style-1">Menu</div>
@@ -82,7 +79,7 @@
                 群組：<%= @group.name  %>
             </div>
             <div class="divider"></div>
-            <%= link_to purchases_path,class:'btn style-1' do  %>
+            <%= link_to group_purchases_path,class:'btn style-1' do  %>
                 正在進行的團購！
             <% end %>
             <%= link_to purchases_done_path(@group),class:'btn' do  %>

@@ -1,7 +1,9 @@
 class PurchasesController < ApplicationController
     before_action :set_group, only: [:done]
     def index 
-        @purchases = Purchase.all
+        # render json: params
+        @group = Group.find(params[:group_id])
+        @purchases = @group.purchases.where("end_time > ?", Time.now)
     end
     def new
         @group = Group.find params[:group_id]
@@ -12,10 +14,11 @@ class PurchasesController < ApplicationController
         @order = Order.find_by(user: current_user, purchase: @purchase) || Order.new 
     end
     def create
+        # render json: {'kevin':'in create method'}
         @purchase = current_user.purchases.build purchase_params
         @purchase.group_id = params[:group_id]
         if @purchase.save
-            redirect_to purchases_path
+            redirect_to group_purchases_path
         else
             render json: {'123':@purchase.errors.full_messages}
         end
@@ -26,6 +29,11 @@ class PurchasesController < ApplicationController
     def finished
         @purchase = Purchase.find(params[:purchase_id])
         @purchase.finish!
+        redirect_to admin_stores_path
+    end
+    def refunded
+        @purchase = Purchase.find(params[:purchase_id])
+        @purchase.refund!
         redirect_to admin_stores_path
     end
     private
