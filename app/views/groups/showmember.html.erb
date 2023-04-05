@@ -1,0 +1,14 @@
+<div class="outsider">
+  <div class="box">
+    <div class="title is-5">
+      群組成員有：
+    </div>
+    
+    <% @group.users.each do |user| %>
+      <p class="mb-2">
+        <%= user.email %> 
+      </p>
+    <% end %>
+    
+  </div>
+</div>

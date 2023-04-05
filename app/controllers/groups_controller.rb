@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-    before_action :set_group, only: [:edit, :update,:destroy]
+    before_action :set_group, only: [:edit, :update,:destroy, :showmember]
     def index 
         @user = current_user
     end
@@ -26,6 +26,12 @@ class GroupsController < ApplicationController
         # @group.stores.destroy(@group)
         @group.destroy 
         redirect_to groups_path
+    end
+    def invite 
+        
+    end
+    def showmember 
+
     end
     private
     def set_group

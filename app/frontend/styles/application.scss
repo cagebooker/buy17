@@ -77,6 +77,10 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
+.read-msg{
+    background-color: #e6e6e6 !important;
+    color: #656464 !important;
+}
 .mt-2{
     margin-top: 3rem;
 }
@@ -102,6 +106,16 @@ body{
     }
     
 }
+.hover-effect{
+    &:hover{
+        border: 1px solid $blue;
+    }
+}
+.hover-effect-2{
+    &:hover{
+        box-shadow: 6px 6px 16px rgba(0,0,0,0.3);
+    }
+}
 .group-container{
     margin-bottom: 20px;
     // border: 1px solid #e5e5e5;
@@ -112,6 +126,9 @@ body{
 }
 .group-title{
     padding-left: 0px !important;
+}
+.is-alarm{
+    color:rgb(220, 59, 59);
 }
 .title-style-1{
     text-align: center;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_03_074915) do
+ActiveRecord::Schema.define(version: 2023_04_04_093455) do
 
   create_table "group_stores", force: :cascade do |t|
     t.integer "group_id", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2023_04_03_074915) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_items_on_store_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "state"
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "ordered_items", force: :cascade do |t|
@@ -108,6 +117,7 @@ ActiveRecord::Schema.define(version: 2023_04_03_074915) do
   add_foreign_key "group_stores", "stores"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "messages", "users"
   add_foreign_key "purchases", "groups"
   add_foreign_key "stores", "users"
 end

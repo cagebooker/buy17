@@ -1,0 +1,14 @@
+<div class="outsider">
+  <%= form_for Message.new, url:'messages/send',method: :post do |f| %>
+    <div class="field">
+      <%= f.label  :user_id,'想要邀情的使用者（email）', class:'label' %>
+      <div class="control">
+        <%= f.text_field :user_id, class:'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.submit '送出邀請', class:'button is-small' %>
+    </div>
+  <% end %>
+  
+</div>

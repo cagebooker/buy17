@@ -85,8 +85,8 @@
             <%= link_to purchases_done_path(@group),class:'btn' do  %>
                 歷史訂單
             <% end %>
-            <%= link_to '#',class:'btn' do  %>
-                成員(2)
+            <%= link_to group_member_path(@group),class:'btn' do  %>
+                成員(<%= @group.users.count %>)
             <% end %>
             <%= link_to new_group_purchase_path,class:'btn' do  %>
                 開啟新團購
@@ -94,7 +94,7 @@
             <%= link_to edit_group_path(@group),class:'btn' do  %>
                 設定群組
             <% end %>
-            <%= link_to '#',class:'btn' do  %>
+            <%= link_to group_invite_path(@group),class:'btn' do  %>
                 邀請其他使用者
             <% end %>
             

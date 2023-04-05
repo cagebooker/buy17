@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'groups/:id/purchases/done' => 'purchases#done', as: 'purchases_done'
   post 'groups/:id/purchases/:id/finished' => 'purchases#finished', as: 'purchase_finished'
   post 'groups/:id/purchases/:id/refunded' => 'purchases#refunded', as: 'purchase_refunded'
+  get 'groups/:id/invite' => 'groups#invite', as: 'group_invite'
+
+  get 'groups/:id/member' => 'groups#showmember', as: 'group_member'
 
   namespace :admin do 
     resources :stores do 
@@ -23,11 +26,15 @@ Rails.application.routes.draw do
       # resources :items
     end
     resources :purchases, only: [:new,:create,:index]
-    
   end
   
   resources :purchases do
     resources :orders
   end
+  
+  resources :messages, only: [:index] do 
+    post :read_message
+  end
+  post '/groups/:id/messages/send' => 'messages#send_message', as: 'message_send'
 
 end

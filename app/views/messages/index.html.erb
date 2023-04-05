@@ -1,0 +1,31 @@
+<div class="outsider">
+  <div class="title is-5">
+    訊息
+  </div>
+  <div class="columns">
+    <div class="column is-6">
+      <% current_user.messages.unread_messages.each do |msg| %>
+        <%= link_to message_read_message_path(msg),method: :post,class:'' do %>
+          <div class="box hover-effect mb-2">
+            <%= msg.content %> | 
+            <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+        <% end %>
+      <% end %>
+      <% current_user.messages.read_messages.each do |msg| %>
+        <%= link_to '#',method: :post,class:'' do %>
+          <div class="box hover-effect-2 mb-2 read-msg">
+              <%= msg.content %> | 
+              <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+        <% end %>
+      <% end %>
+      
+      
+    </div>
+    <div class="column is-6">
+    
+    </div>
+  </div>
+
+</div>
