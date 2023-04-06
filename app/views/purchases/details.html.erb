@@ -1,0 +1,52 @@
+<div class="outsider">
+  <div class="title is-5">
+    團購的明細：
+  </div>
+  <div class="columns">
+    <div class="column is-8">
+      <div class="box">
+        <div class="level">
+          <div class="level-left">
+            <div class="title is-5">訂單編號：<%= @purchase.id %></div>
+          </div>
+          <div class="level-right">
+            <span class="title is-6">發起人：<%= User.find(@purchase.user_id).email %></span>
+          </div>
+        </div>
+        
+        <% @purchase.orders.each do |order| %>
+          <div class="divider"></div>
+          <div class="titel is-5">點餐人：<%= order.user.email %></div>
+            <div class="level">
+              <div class="level-left">
+                <% order.ordered_items.each do |order_item| %>
+                  <%= order_item.item.name %> x
+                  <%= order_item.quantity %>,
+                <% end %> 
+              </div>
+              <div class="level-right">
+                金額：
+            <%= order.total_price %>
+              </div>
+            </div>
+            
+        <% end %>
+        <div class="divider"></div>
+        <div class="level">
+          <div class="level-left"></div>
+          <div class="level-right">
+            團購總金額：
+            $ <%= @purchase.total_income %>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="column is-3 is-offset-1">
+      <%= @group.name %>
+      <div class="divider"></div>
+      <%= link_to '回到群組', group_stores_path(@group), class:'button is-fullwidth' %>
+    </div>
+  </div>
+  
+</div>

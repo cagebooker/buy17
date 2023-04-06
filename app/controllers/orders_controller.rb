@@ -6,16 +6,20 @@ class OrdersController < ApplicationController
     end
     def update
         if @order.update orders_params
-            redirect_to purchase_path(@purchase)
+            redirect_to group_purchases_path(@order.purchase.group), notice: '訂單已送出'
+            # redirect_to purchase_path(@purchase)
         else
             render 'purchase/show'
         end
     end
     def create
+        # @group = Group.find
         @order = @purchase.orders.new orders_params
         @order.user_id = current_user.id
         if @order.save
+
             redirect_to purchase_path(@purchase)
+            # redirect_to group_purchases_path(@group)
         else
             render json: { 'adb': @order.errors.full_messages, 'userid': current_user.id}
         end

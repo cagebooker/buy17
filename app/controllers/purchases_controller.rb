@@ -36,6 +36,11 @@ class PurchasesController < ApplicationController
         @purchase.refund!
         redirect_to admin_stores_path
     end
+    def details
+        # render json: params
+        @group = Group.find(params[:group_id])
+        @purchase = Purchase.find(params[:id])
+    end
     private
     def purchase_params
         params.require(:purchase).permit(:time_period, :store_id, :end_time)

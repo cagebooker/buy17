@@ -9,4 +9,6 @@ class Store < ApplicationRecord
     has_many :groups, through: :group_store
 
     belongs_to :user
+
+    
 end
