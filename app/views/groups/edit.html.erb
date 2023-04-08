@@ -7,9 +7,15 @@
             <div class="title is-4 title-style-1">
               管理群組
             </div>
+            
             <%= render 'form' %> 
-            <div class="">
-            <%= link_to '解散這個群組', group_path(@group), method: :delete,class:'button is-small is-fullwidth mt-2', data:{confirm:"確定要解散這個群租嗎？"} %>
+            <div class="columns">
+              <div class="column is-6">
+                <%= link_to '解散這個群組', group_path(@group), method: :delete,class:'button is-small is-fullwidth mt-2', data:{confirm:"確定要解散這個群租嗎？"} %>
+              </div>
+              <div class="column is-6">
+                <%= link_to '回到群組', group_stores_path(@group),class:'button is-small is-fullwidth mt-2' %>
+              </div>
             </div>
             
           </div>

@@ -10,7 +10,10 @@ class Order < ApplicationRecord
     def total_price
         t_price = 0
         self.ordered_items.each do |order_item|
-            t_price += (order_item.quantity * order_item.item.price)
+            if order_item.item === nil
+            else
+                t_price += (order_item.quantity * order_item.item.price)
+            end
         end
         t_price
     end

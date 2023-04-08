@@ -1,0 +1,60 @@
+<div class="outsider">
+  <div class="title is-4">目前所有進行中的團購</div>
+  <% current_user.groups.each do |group| %>
+    <div class="divider"></div>
+    <div class="title is-5">
+      <%= group.name %>
+    </div>
+    <div class="columns">
+      <% group.purchases.pending_purchase.each do |purchase| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-image">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <%= link_to purchase_path(purchase) do %>
+                      <p class="title is-4"><%= purchase.store.name %></p>
+                    
+                    <% end %>
+                    
+                    <p class="subtitle is-6">@kevingu</p>
+                  </div>
+                </div>
+                <div class="content">
+                  <%= truncate purchase.store.description, length: 30 %>
+                </div>
+                <div class="columns">
+                  <div class="column is-4">
+                    <div class="title is-6">
+                      <%= link_to purchase_details_path(purchase,{group_id: group.id}),class:'button is-small' do %>
+                        <span>團購明細</span>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="column is-3">
+                    <div class="title is-6">140</div>
+                    <div class="subtitle is-6">人團購</div>
+                  </div>
+                  <div class="column is-5">
+                    <div class="title is-6"><%= purchase.end_time.strftime('%m/%d %H:%M') %></div>
+                    <div class="subtitle is-6">限時截止</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <% end %>
+    </div>
+    
+    
+  <% end %>
+  
+</div>

@@ -11,7 +11,7 @@
                 <span class="title is-6"><%= item.name %></span>
                 <span class="title is-6">$ <%= item.price %></span>
                 
-                <%= link_to '#',data:{confirm:'確定要刪除這個菜單嗎？'} do  %>
+                <%= link_to admin_store_item_path(@store,item),method: :delete,data:{confirm:'確定要刪除這個菜單嗎？'} do  %>
                   <i class="fa-solid fa-xmark"></i>
                 
                 <% end %>

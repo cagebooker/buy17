@@ -26,4 +26,7 @@ class Purchase < ApplicationRecord
         end
         income
     end
+
+    scope :finished_purchase, -> { where(state:"finished")}
+    scope :pending_purchase, -> { where("end_time > ?", Time.now)}
 end

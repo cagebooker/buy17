@@ -19,7 +19,17 @@
               <div class="media">
                 <div class="media-content">
                   <%= link_to edit_admin_store_path(store) do %>
-                    <p class="title is-4"><%= store.name %></p>
+                    <p class="title is-4">
+                      <%= store.name %> | 
+                      <% if store.state == 'online' %>
+                        <span class="state-online title is-6"> <%= store.state %></span>
+                      <% elsif store.state == "offline" %>
+                        <span class="state-offline title is-6"> <%= store.state %></span>
+                      <% else %>
+                      
+                      <% end %>
+                      
+                    </p>
                   <% end %>
                   
                   <p class="subtitle is-6"><%= store.user.email %></p>
@@ -28,7 +38,7 @@
 
               <div class="content">
                 建立的時間：
-                <time datetime="2016-1-1"><%= store.created_at %></time>
+                <time datetime="2016-1-1"><%= store.created_at.strftime("%Y/%m/%d %H:%M") %></time>
               </div>
             </div>
           </div>
@@ -49,35 +59,33 @@
         今日(<%= Time.now.strftime("%Y/%m/%d") %>)未完成訂單： 
         <% @purchases_pending.each do |purchase| %>
           <div class="box">
-              <%= purchase.store.name %> | 
-              
-              <% if purchase.state == 'pending' %>
-                <span class="state-p">等待中</span>
-                | 訂單送出時間：<%= purchase.end_time.strftime("%m/%d %I:%M") %>
-              <% else %>
-                <span class="state-p">已完成</span>
-              <% end %>
-              <br>
-              訂單編號： <%= purchase.id %>,  訂購人： <%= purchase.user.email %>
-              <% purchase.orders.each do |order| %>
-                <% order.ordered_items.each do |order_item| %>
-                  <br>
-                  <%= order_item.item.name %> 數量：
-                  <%= order_item.quantity %> 
-                <% end %>  
-             <% end %>
-             <br>
-             <div class="columns mt-2">
+            <%= purchase.store.name %> | 
+            <% if purchase.state == 'pending' %>
+              <span class="state-p">等待中</span>
+              | 訂單送出時間：<%= purchase.end_time.strftime("%m/%d %I:%M") %>
+            <% else %>
+              <span class="state-p">已完成</span>
+            <% end %>
+            <br>
+            訂單編號：<%= purchase.id %>,   訂購人： <%= purchase.user.email %>
+            <% purchase.orders.each do |order| %>
+              <% order.ordered_items.each do |order_item| %>
+                <br>
+                <%= order_item.item.name %> 數量：
+                <%= order_item.quantity %> 
+              <% end %>  
+            <% end %>
+            <br>
+            <div class="columns mt-2">
               <div class="column is-9">
                 <%= link_to '完成訂單',purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
               </div>
               <div class="column is-3">
                 <%= link_to '空單取消',purchase_refunded_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
               </div>
-             </div>
-             
-            
             </div>
+             
+          </div>
         <% end %>
         
        

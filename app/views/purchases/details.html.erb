@@ -43,9 +43,12 @@
       </div>
     </div>
     <div class="column is-3 is-offset-1">
-      <%= @group.name %>
+      <div class="title is-5">
+        <%= @group.name %>的團購
+      </div>
+     
       <div class="divider"></div>
-      <%= link_to '回到群組', group_stores_path(@group), class:'button is-fullwidth' %>
+      <%= link_to '回到群組', group_stores_path(@group), class:'button is-fullwidth is-small' %>
     </div>
   </div>
   

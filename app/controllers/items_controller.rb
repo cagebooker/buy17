@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-    before_action :set_store, only: [:create, :edit, :update, :destroy]
+    before_action :set_store, only: [:create, :edit, :update, ]
     before_action :set_item, only: [:edit, :update, :destroy]
     def create 
         if @store.items.create item_params
@@ -13,14 +13,16 @@ class ItemsController < ApplicationController
     end
     def update 
         if @item.update item_params
-            redirect_to store_path(@store), notice: 'Item was successfully updated.'
+            redirect_to store_path(@store), notice: '新增商品成功！'
         else
             render 'edit'
         end
     end
     def destroy
+        @group = Group.find(params[:store_id])
+        render json: @item
         @item.destroy
-        redirect_to store_path(@store), notice: 'Item was successfully destroyed.'
+        redirect_to store_path(@store), notice: '商品已刪除！'
     end
 
     private

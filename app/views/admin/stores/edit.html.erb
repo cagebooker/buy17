@@ -1,5 +1,13 @@
 <div class="outsider">
-  <h1 class="title is-4">更新店家資訊</h1>
+  <h1 class="title is-4">更新店家資訊  
+    <% if @store.state == 'online' %>
+      <span class="state-online"> <%= @store.state %></span>
+    <% elsif @store.state == "offline" %>
+      <span class="state-offline title is-6"> <%= @store.state %></span>
+    <% else %>
+      <span class="state-offline title is-6">預備中</span>
+    <% end %>
+  </h1>
   <div class="box">
   <%= render 'form' %>
   </div>

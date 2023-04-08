@@ -15,6 +15,7 @@
       <%= render 'backend/navbar' %>
       <%= yield %>
     </div>
+    <%= render 'shared/flash' if notice %>
     
   </body>
 </html>

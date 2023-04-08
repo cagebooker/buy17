@@ -18,7 +18,7 @@
                             <%= f.label :store_id,'店家', class:'label' %>
                             <div class="control">
                                 <span class="select">
-                                   <%= f.collection_select :store_id, Store.all, :id, :name %> 
+                                   <%= f.collection_select :store_id, @group.stores.all, :id, :name %> 
                                 </span>
                             </div>
                         </div>

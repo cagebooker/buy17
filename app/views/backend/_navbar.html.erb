@@ -9,16 +9,9 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
+    <div class="navbar-start"> 
       <%= link_to '建立店家', new_admin_store_path, class:'navbar-item style-3' %>
-
-      <a class="navbar-item style-3">
-        餐點
-      </a>
-      <a class="navbar-item style-3">
-        訂單
-      </a>
-
+      <%= link_to '訂單總覽', purchases_admin_stores_path,class:'navbar-item style-3' %>
     </div>
 
     <div class="navbar-end">

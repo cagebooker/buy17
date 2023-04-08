@@ -14,9 +14,16 @@ Rails.application.routes.draw do
   get 'groups/:id/invite' => 'groups#invite', as: 'group_invite'
 
   get 'groups/:id/member' => 'groups#showmember', as: 'group_member'
+  get '/pending_purchases'  => 'groups#pending_purchases', as: 'pending_purchases'
 
   namespace :admin do 
     resources :stores do 
+      post 'online', as: 'online'
+      post 'offline', as: 'offline'
+      
+      collection do
+        get 'purchases', as: 'purchases'
+      end
       resources :items
 
     end

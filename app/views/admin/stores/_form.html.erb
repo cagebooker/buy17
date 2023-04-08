@@ -56,7 +56,14 @@
               <span>管理菜單</span>
             <% end %>
             <%= link_to "返回上一页", :back ,class:'button' %>
-            <%= link_to '關閉店家','#',class:'button' %>
+            <% if @store.state == 'online' %>
+                <%= link_to '關閉店家',admin_store_offline_path(@store),method: :post,class:'button is-link is-outlined' %>
+            <% elsif @store.state == "offline" %>
+                <%= link_to '店家上架',admin_store_online_path(@store),method: :post,class:'button is-purple' %>
+            <% else %>
+                <%= link_to '店家上架',admin_store_online_path(@store),method: :post,class:'button is-purple' %>
+            <% end %>
+            
         </div>
     </div>
     </div>

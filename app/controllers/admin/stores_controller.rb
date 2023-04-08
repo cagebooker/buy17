@@ -34,7 +34,20 @@ class Admin::StoresController < ApplicationController
     @store.update store_params
     render 'edit'
     # redirect_to admin_stores_path, :notice => 'Store was successfully updated.'
-end
+  end
+  def online
+    @store = Store.find(params[:store_id])
+    @store.up!
+    redirect_to admin_stores_path, :notice => '店家已經上架'
+  end
+  def offline
+    @store = Store.find(params[:store_id])
+    @store.down!
+    redirect_to admin_stores_path, :notice  => '店家已經下架'
+  end
+  def purchases
+    @stores = current_user.stores
+  end
   private
   def set_store
     @store = Store.find params[:id]

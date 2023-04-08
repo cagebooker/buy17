@@ -33,6 +33,9 @@ class GroupsController < ApplicationController
     def showmember 
 
     end
+    def pending_purchases
+        
+    end
     private
     def set_group
         @group = Group.find params[:id]
