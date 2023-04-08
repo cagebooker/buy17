@@ -1,12 +1,12 @@
 <div class="outsider">
     <div class="columns">
         <div class="column is-9">
-            <div class="title is-4 left-fix-1">您的店家</div>
+            <div class="title is-4">您的店家</div>
             <% if @stores.present? %>
                 <% @stores.each do |store| %>
-                    <div class="card store-section stay-centered">
-                        <div class="box-mb">
-                            <div class="store-info ">
+                    <div class="card padding-fix-1 card-mb card-height">
+                        <div class="columns gapless">
+                            <div class="column is-5 padding-none">
                                 <div class="card-content has-border-right">
                                     <div class="media">
                                         <div class="media-left">
@@ -15,7 +15,15 @@
                                         </figure>
                                         </div>
                                         <div class="media-content">
-                                        <%= link_to store.name, '#', class:'title is-5' %> <br>
+                                        <span class="title is-5"><%= store.name %></span> | 
+                                        <% if store.state == 'pending' %>
+                                            <span class="state-pending">準備中</span>
+                                        <% elsif store.state == 'online' %>
+                                            <span class="state-f">上線</span>
+                                        <% else %>
+                                            <span class="state-offline">關閉</span>
+                                        <% end %>
+                                        <br>
                                         <p class="subtitle is-6">@kevingu</p>
                                         </div>
                                         
@@ -23,50 +31,48 @@
                                     <div class="content">
                                         <%= store.description.truncate(50) %>
                                     </div>
-                                    <div class="columns">
-                                        <div class="column is-2">
-                                        <div class="title is-6">$150</div>
-                                        <div class="subtitle is-6">最低價</div>
+                                    <div class="">
+                                        <div class="">
+                                        <span class="title is-6">15</span>
+                                        <span class="subtitle is-6">項商品</span>
                                         </div>
-                                        <div class="column is-2">
-                                        <div class="title is-6">15</div>
-                                        <div class="subtitle is-6">項商品</div>
+                                        <div class="">
+                                        <span class="subtitle is-6">聯絡電話：</span>
+                                        <span class="title is-6"><%= store.phone %></span>
                                         </div>
-                                        <div class="column is-4">
-                                        <div class="title is-6"><%= store.phone %></div>
-                                        <div class="subtitle is-6">聯絡電話</div>
-                                        </div>
-                                        <div class="column is-4">
-                                        <div class="title is-6"><%= store.address %></div>
-                                        <div class="subtitle is-6">地址</div>
+                                        <div class="">
+                                        <span class="subtitle is-6">地址：</span>
+                                        <span class="title is-6"><%= store.address %></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="store-menu">
-                                <div class="titlebar has-text-centered style-1">Menu</div>
+                            <div class="column is-7 padding-none">
+                                <div class="store-menu">
+                                    <div class="titlebar has-text-centered style-gray">Menu</div>
 
-                                <div class="card-content">
-                                    <div class="columns is-multiline">
-                                        <% store.items.each do |item| %>
-                                            <div class="column is-4">
-                                                <div class="card">
-                                                    <div class="card-image">
-                                                    <figure class="image is-4by3">
-                                                        <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                                                    </figure>
-                                                    </div>
-                                                    <div class="card-content">
-                                                    <div><%= item.name %></div>
-                                                    <div class="title is-5">$<%= item.price %></div>
+                                    <div class="card-content overflow-fix">
+                                        <div class="columns is-multiline">
+                                            <% store.items.each do |item| %>
+                                                <div class="column is-4">
+                                                    <div class="card">
+                                                        <div class="card-image">
+                                                        <figure class="image is-4by3">
+                                                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                                                        </figure>
+                                                        </div>
+                                                        <div class="padding-fix">
+                                                        <span><%= item.name %></span>
+                                                        <span class="title is-6">$<%= item.price %></span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        <% end %>
+                                            <% end %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>      
+                        </div>
                     </div>
                 <% end %>
             <% else %>

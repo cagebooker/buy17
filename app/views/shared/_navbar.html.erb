@@ -46,7 +46,7 @@
                       <i class="fa-sharp fa-solid fa-circle-exclamation is-alarm"></i>
                     <% end %>  
                   <% end %>
-                  <%= link_to '正參加的團購','#',class:'dropdown-item' %>
+                  <%= link_to '正參加的團購',pending_purchases_path,class:'dropdown-item' %>
                   <hr class="dropdown-divider">
                   <% if user_signed_in? %>
                     <%= link_to '登出', destroy_user_session_path, method: :delete, class:'dropdown-item'  %>

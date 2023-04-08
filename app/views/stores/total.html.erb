@@ -13,8 +13,17 @@
                           </figure>
                           </div>
                           <div class="media-content">
-                          <%= link_to store.name, '#', class:'title is-5' %> <br>
-                          <p class="subtitle is-6">@kevingu</p>
+                            <span class="title is-5"><%= store.name %></span> | 
+                            <% if store.state == 'pending' %>
+                                <span class="state-pending">準備中</span>
+                            <% elsif store.state == 'online' %>
+                                <span class="state-f">上線</span>
+                            <% else %>
+                                <span class="state-offline">關閉</span>
+                            <% end %>
+                            
+                             <br>
+                            <p class="subtitle is-6">@kevingu</p>
                           </div>
                           <div class="media-right">
                             <div class="dropdown is-hoverable">
