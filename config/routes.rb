@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'groups/:id/member' => 'groups#showmember', as: 'group_member'
   get '/pending_purchases'  => 'groups#pending_purchases', as: 'pending_purchases'
 
+  # 個人團購歷史紀錄
+  get '/purchases_history' => 'purchases#history', as: 'purchases_history'
+
   namespace :admin do 
     resources :stores do 
       post 'online', as: 'online'

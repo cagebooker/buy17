@@ -15,9 +15,8 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <%= link_to '店家一覽', '/stores', class:'navbar-item style-1' %>
-      <a class="navbar-item style-1">
-        歷史紀錄
-      </a>
+      <%= link_to '團購紀錄', purchases_history_path, class:'navbar-item style-1' %>
+      
       <a class="navbar-item style-1">
         訂閱
       </a>  

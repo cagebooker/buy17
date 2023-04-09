@@ -42,6 +42,10 @@ class PurchasesController < ApplicationController
         @group = Group.find(params[:group_id])
         @purchase = Purchase.find(params[:id])
     end
+    def history 
+        @orders = current_user.orders.includes(:items,:ordered_items)
+    end
+
     private
     def purchase_params
         params.require(:purchase).permit(:time_period, :store_id, :end_time)
