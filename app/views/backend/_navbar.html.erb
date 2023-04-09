@@ -31,15 +31,7 @@
                 <div class="dropdown-content">
                   <%= link_to '個人資料修改', edit_user_registration_path,class:'dropdown-item' %>
                   <%= link_to '回到 17團購', '/', class:'dropdown-item' %>
-                  <a class="dropdown-item">
-                    Other dropdown item
-                  </a>
-                  <a href="#" class="dropdown-item">
-                    Active dropdown item
-                  </a>
-                  <a href="#" class="dropdown-item">
-                    Other dropdown item
-                  </a>
+                
                   <hr class="dropdown-divider">
                   <% if user_signed_in? %>
                     <%= link_to '登出', destroy_user_session_path, method: :delete, class:'dropdown-item'  %>

@@ -20,7 +20,7 @@
                     </figure>
                   </div>
                   <div class="media-content">
-                    <%= link_to purchase_path(purchase) do %>
+                    <%= link_to group_purchase_path(@group.id,purchase) do %>
                       <p class="title is-4"><%= purchase.store.name %></p>
                     
                     <% end %>

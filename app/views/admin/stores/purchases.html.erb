@@ -6,47 +6,50 @@
     <p class="title is-5">
       <%= store.name %>
     </p>
-    <div class="columns">
-      <% store.purchases.each do |purchase| %>
+    <div class="columns ">
         <div class="column is-9 height-fix-1">
-          <% if purchase.state == 'pending' %>
-            
-          <% elsif purchase.state == 'finished' %>
-            <div class="box">
-              <%= purchase.store.name %> | <span class="state-f">已完成</span>
+          <% store.purchases.each do |purchase| %>
+            <% if purchase.state == 'pending' %>
               
-              <br>
-              訂單編號：<%= purchase.id %>,   訂購人： <%= purchase.user.email %>
-              <br>
-              <div class="level">
-                <div class="level-left">
-                  <% purchase.orders.each do |order| %>
-                    <p>
-                      <% order.ordered_items.each do |order_item| %>
-                        <%= order_item.item.name %> x
-                        <%= order_item.quantity %>, 
-                      <% end %> 
-                    </p>
-                  <% end %>
+            <% elsif purchase.state === 'finished' %>
+              <div class="box">
+                <%= purchase.store.name %> | <span class="state-f">已完成</span>
+                
+                <br>
+                訂單編號：<%= purchase.id %>,   訂購人： <%= purchase.user.email %>
+                <%= purchase.state %>
+                <br>
+                <div class="level">
+                  <div class="level-left">
+                    <% purchase.orders.each do |order| %>
+                      <p>
+                        <% order.ordered_items.each do |order_item| %>
+                          <%= order_item.item.name %> x
+                          <%= order_item.quantity %>, 
+                        <% end %> 
+                      </p>
+                    <% end %>
+                  </div>
+                  <div class="level-right">
+                    <span class="title is-6">
+                      收入：  <%= purchase.total_income %>
+                    </span> 
+                  </div>
                 </div>
-                <div class="level-right">
-                  <span class="title is-6">
-                    收入：  <%= purchase.total_income %>
-                  </span> 
-                </div>
+                
+                
               </div>
-              
-              
-            </div>
+            <% end %>
           <% end %>
         </div>
         <div class="column is-3">
           <div class="box">
             <p>本月訂單量： <%= store.purchases.finished_purchase.count %></p>
             <p>本月收益： <%= store.total_income %></p>
+            <p>退回訂單： <%= store.purchases.refunded.count %></p>
           </div>
         </div>
-      <% end %>
+      
     </div>
     
     

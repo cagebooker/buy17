@@ -10,6 +10,7 @@ class PurchasesController < ApplicationController
         @purchase = Purchase.new
     end
     def show
+        @group = Group.find params[:group_id]
         @purchase = Purchase.find params[:id]
         @order = Order.find_by(user: current_user, purchase: @purchase) || Order.new 
     end

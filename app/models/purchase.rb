@@ -28,5 +28,6 @@ class Purchase < ApplicationRecord
     end
 
     scope :finished_purchase, -> { where(state:"finished")}
+    scope :refunded_purchase, -> { where(state:"refunded")}
     scope :pending_purchase, -> { where("end_time > ?", Time.now)}
 end

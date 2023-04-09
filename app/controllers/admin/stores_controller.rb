@@ -46,7 +46,7 @@ class Admin::StoresController < ApplicationController
     redirect_to admin_stores_path, :notice  => '店家已經下架'
   end
   def purchases
-    @stores = current_user.stores
+    @stores = current_user.stores.includes(:purchases)
   end
   private
   def set_store
