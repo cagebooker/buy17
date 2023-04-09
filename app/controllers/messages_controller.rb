@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_group,only: [:send_message]
+  skip_before_action :verify_authenticity_token, only: [:send_message]
   def index
 
   end
