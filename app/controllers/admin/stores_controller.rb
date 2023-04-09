@@ -1,6 +1,7 @@
 class Admin::StoresController < ApplicationController
   before_action :authenticate_user!
   before_action :set_store, only: [:edit, :update]
+  before_action :set_store_2, only: [:online, :offline, :pending]
 	layout 'backend'
 
   def index
@@ -32,23 +33,28 @@ class Admin::StoresController < ApplicationController
   end
   def update
     @store.update store_params
-    render 'edit'
+    render 'edit', :notice => '商店資訊已經更新！'
     # redirect_to admin_stores_path, :notice => 'Store was successfully updated.'
   end
   def online
-    @store = Store.find(params[:store_id])
     @store.up!
-    redirect_to admin_stores_path, :notice => '店家已經上架'
+    redirect_to admin_stores_path, :notice => '店家已經上線囉！'
   end
   def offline
-    @store = Store.find(params[:store_id])
     @store.down!
-    redirect_to admin_stores_path, :notice  => '店家已經下架'
+    redirect_to admin_stores_path, :notice  => '店家已經關閉囉！'
+  end
+  def pending
+    @store.prepare!
+    redirect_to admin_stores_path, :notice  => '店家已經改為準備中！'
   end
   def purchases
     @stores = current_user.stores.includes(:purchases)
   end
   private
+  def set_store_2
+    @store = Store.find(params[:store_id])
+  end
   def set_store
     @store = Store.find params[:id]
   end

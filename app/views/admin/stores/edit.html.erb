@@ -1,15 +1,36 @@
 <div class="outsider">
-  <h1 class="title is-4">更新店家資訊  
-    <% if @store.state == 'online' %>
-      <span class="state-online"> <%= @store.state %></span>
-    <% elsif @store.state == "offline" %>
-      <span class="state-offline title is-6"> <%= @store.state %></span>
-    <% else %>
-      <span class="state-offline title is-6">預備中</span>
-    <% end %>
-  </h1>
-  <div class="box">
-  <%= render 'form' %>
+  <h1 class="title is-4">更新店家資訊 </h1>
+  <div class="columns">
+    <div class="column is-9">
+      <div class="box">
+        <%= render 'form' %>
+      </div>
+    </div>
+    <div class="column is-3">
+      <div class="box">
+        <div class="title is-5">
+          <%= @store.name %> |
+          <% if @store.state == 'online' %>
+            <span class="state-online"> <%= @store.state %></span>
+          <% elsif @store.state == "offline" %>
+            <span class="state-offline title is-6">關閉中</span>
+          <% else %>
+            <span class="state-offline title is-6">預備中</span>
+          <% end %>
+        </div>
+        <% if @store.state == 'online' %>
+          <%= link_to '關閉店家',admin_store_offline_path(@store),method: :post,class:'button is-dark is-outlined is-small' %>
+          <%= link_to '準備中',admin_store_pending_path(@store),method: :post,class:'button is-info is-small is-outlined' %>
+        <% elsif @store.state == "offline" %>
+          <%= link_to '店家上線',admin_store_online_path(@store),method: :post,class:'button is-primary is-small is-outlined' %>
+        <% else %>
+          <%= link_to '店家上線',admin_store_online_path(@store),method: :post,class:'button is-primary is-small is-outlined' %>
+          <%= link_to '店家關閉',admin_store_offline_path(@store),method: :post,class:'button is-dark is-small is-outlined' %>
+        <% end %>
+      </div>
+    </div>
   </div>
+  
+  
 </div>
   

@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   post '/groups/:id/store/:id/set_store' => 'stores#set', as: 'set_group_store'
 
   get 'groups/:id/purchases/done' => 'purchases#done', as: 'purchases_done'
+  # store state 轉換
   post 'groups/:id/purchases/:id/finished' => 'purchases#finished', as: 'purchase_finished'
   post 'groups/:id/purchases/:id/refunded' => 'purchases#refunded', as: 'purchase_refunded'
+  
   get 'groups/:id/purchases/:id/details' => 'purchases#details', as: 'purchase_details'
   get 'groups/:id/invite' => 'groups#invite', as: 'group_invite'
 
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
     resources :stores do 
       post 'online', as: 'online'
       post 'offline', as: 'offline'
+      post 'pending', as: 'pending'
       
       collection do
         get 'purchases', as: 'purchases'

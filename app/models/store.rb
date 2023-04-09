@@ -22,6 +22,9 @@ class Store < ApplicationRecord
       event :down do
         transitions from: [:online], to: :offline
       end
+      event :prepare do
+        transitions from: [:online], to: :pending
+      end
 
     end
 
@@ -35,5 +38,5 @@ class Store < ApplicationRecord
 
     #scope
     scope :online_store, -> { where(state:"online")}
-
+    scope :available_store, -> { where.not(state:"offline")}
 end

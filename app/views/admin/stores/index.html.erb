@@ -22,11 +22,11 @@
                     <p class="title is-4">
                       <%= store.name %> | 
                       <% if store.state == 'online' %>
-                        <span class="state-online title is-6"> <%= store.state %></span>
+                        <span class="state-online title is-6">上線</span>
                       <% elsif store.state == "offline" %>
-                        <span class="state-offline title is-6"> <%= store.state %></span>
+                        <span class="state-offline title is-6">關閉中</span>
                       <% else %>
-                      
+                        <span class="state-pending title is-6">準備中</span>
                       <% end %>
                       
                     </p>

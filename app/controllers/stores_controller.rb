@@ -6,7 +6,7 @@ class StoresController < ApplicationController
         @allStores = Store.where.not(state: 'offline').includes(:items)
     end
     def index 
-        @stores = @group.stores.includes(:items)
+        @stores = @group.stores.where.not(state: 'offline').includes(:items)
     end
     def set
         # 建立 group store的關聯
