@@ -32,5 +32,8 @@ class Store < ApplicationRecord
       end
       t_income
     end
+
+    #scope
     scope :online_store, -> { where(state:"online")}
+
 end

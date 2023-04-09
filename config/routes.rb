@@ -33,7 +33,9 @@ Rails.application.routes.draw do
     resources :stores do
       # resources :items
     end
-    resources :purchases, only: [:new,:create,:index,:show]
+    resources :purchases, only: [:new,:create,:index,:show] do 
+      resources :orders
+    end
   end
   
   resources :purchases,except: [:show] do

@@ -3,7 +3,7 @@ class StoresController < ApplicationController
     before_action :set_group, only: [:index, :show, :edit, :destroy ,:update, :set]
     before_action :set_store_by_id, only: [:set]
     def total
-        @allStores = Store.all
+        @allStores = Store.where.not(state: 'offline').includes(:items)
     end
     def index 
         @stores = @group.stores.includes(:items)

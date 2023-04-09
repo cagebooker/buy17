@@ -29,7 +29,7 @@
               
               <br>
               <h1 class="title is-5">您的購物清單</h1>
-              <%= form_for [@purchase, @order] do |f| %>
+              <%= form_for [@group,@purchase, @order] do |f| %>
                 <%= f.fields_for :ordered_items do |item_form| %>
                   <%= render 'ordered_item_fields', f: item_form %>
                 <% end %>

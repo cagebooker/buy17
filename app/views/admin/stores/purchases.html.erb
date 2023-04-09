@@ -24,8 +24,12 @@
                     <% purchase.orders.each do |order| %>
                       <p>
                         <% order.ordered_items.each do |order_item| %>
-                          <%= order_item.item.name %> x
-                          <%= order_item.quantity %>, 
+                          <% if order_item.item.present? %>
+                            <%= order_item.item.name %> x
+                            <%= order_item.quantity %>, 
+                          
+                          <% end %>
+                          
                         <% end %> 
                       </p>
                     <% end %>

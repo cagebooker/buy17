@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
         redirect_to groups_path
     end
     def invite 
-        
+        @group = Group.find params[:id]
     end
     def showmember 
 
