@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
   end
   private
   def item_params
-    params.require(:item).permit(:name, :price)
+    params.require(:item).permit(:name, :price, :logo)
   end
   def set_store
     @store = Store.find(params[:store_id])

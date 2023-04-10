@@ -10,13 +10,21 @@
           <div class="card">
             <div class="card-image">
               <figure class="image is-2by1">
-                <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                <% if purchase.store.cover.attached? %>
+                    <%= image_tag purchase.store.cover.variant(resize:'960x960') %>
+                <% else %>
+                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                <% end %>
               </figure>
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
                     <figure class="image is-48x48">
-                      <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                      <% if purchase.store.cover.attached? %>
+                          <%= image_tag purchase.store.cover.variant(resize:'120x120') %>
+                      <% else %>
+                          <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                      <% end %>
                     </figure>
                   </div>
                   <div class="media-content">

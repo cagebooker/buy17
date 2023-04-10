@@ -7,4 +7,7 @@ class Group < ApplicationRecord
   has_many :stores, through: :group_store, :dependent => :nullify
 
   has_many :purchases
+
+  # active_storage
+  has_one_attached :cover
 end

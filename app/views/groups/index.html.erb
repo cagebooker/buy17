@@ -23,16 +23,25 @@
                     <div class="column is-4">
                         <div class="group-container ">
                             <div class="group-title">
-                                <span class="image-fix">
-                                    <img src="http://via.placeholder.com/24x24" alt="placeholder">
+                                <span class="image-fix mr-2">
+                                    <% if g.cover.attached? %>
+                                        <%= image_tag g.cover.variant(resize:'40x40')  %>
+                                    <% else %>
+                                        <img src="http://via.placeholder.com/24x24" alt="placeholder">
+                                    <% end %>
                                 </span>
                                 
-                                <span><%= g.name %></span>
+                                <span class="title is-5"><%= g.name %></span>
             
                             </div>
                             <div class="group-content">
                                 <%= link_to group_stores_path(g.id) do  %>
-                                    <img src="http://via.placeholder.com/188x108" alt="placeholder">
+                                    <% if g.cover.attached? %>
+                                        <%= image_tag g.cover.variant(resize:'190x120')  %>
+                                    <% else %>
+                                        <img src="http://via.placeholder.com/188x108" alt="placeholder">
+                                    <% end %>
+                                    
                                 <% end %>
                                 
                             </div>

@@ -2,12 +2,11 @@
     <div class="columns">
     <div class="column is-6">
         <div class="field">
-            <label class="label">商標</label>
-            <input id="store_logo" type="file">
-        </div>
-        <div class="field">
-            <label class="label">圖片</label>
-            <input id="store_picture" type="file">
+            <%= f.label :cover,'店家圖片',class:'label' %>
+            <div class="control mb-2">
+                <%= f.file_field :cover %>
+            </div>
+            <%= image_tag @store.cover.variant(resize:'320x260') if @store.cover.attached? %>
         </div>
     </div>
     <div class="column is-6">

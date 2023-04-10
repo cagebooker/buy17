@@ -59,6 +59,6 @@ class Admin::StoresController < ApplicationController
     @store = Store.find params[:id]
   end
   def store_params
-    params.require(:store).permit(:name, :address, :phone, :description)
+    params.require(:store).permit(:name, :address, :phone, :description, :cover)
   end
 end

@@ -43,7 +43,7 @@ class PurchasesController < ApplicationController
         @purchase = Purchase.find(params[:id])
     end
     def history 
-        @orders = current_user.orders.includes(:items,:ordered_items)
+        @orders = current_user.orders.order(id: :desc).includes(:items,:ordered_items)
     end
 
     private

@@ -1,6 +1,9 @@
 class Store < ApplicationRecord
     validates_presence_of :name, :address, :phone, :description
 
+    # active_storage
+    has_one_attached :cover
+
     #relationships
     has_many :items
     has_many :purchases

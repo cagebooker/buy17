@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-content">
+    <h1 class="title is-5">新增菜單</h1>
+      <%= form_for Item.new, url:admin_store_items_path(@store) do |f| %>
+        <div class="field">
+          <%= f.label :name, '名稱', class:'label' %>
+          <div class="control">
+            <%= f.text_field :name, class:'input' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :price, '價格', class:'label' %>
+          <div class="control">
+            <%= f.text_field :price, class:'input' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :logo, '圖片', class:'label' %>
+          <div class="control">
+            <%= f.file_field :logo %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.submit '確定',class:'button style-1 is-fullwidth is-small' %>
+        </div>
+        <div class="field">
+          <%= link_to "返回上一页", :back %>
+        </div>
+      <% end %>
+    </div>
+</div>
