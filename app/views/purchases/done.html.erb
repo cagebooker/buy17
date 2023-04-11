@@ -15,7 +15,7 @@
                       </p>
                     <% end %>
                     
-                    <%= link_to '明細', '#', class:'button is-small is-fullwidth mt-2' %>
+                    <%= link_to '明細', purchase_details_path(purchase,{group_id: @group.id}), class:'button is-small is-fullwidth mt-2' %>
                   </div>
                   <div class="media-content">
                     <span class="state-f mt-2">訂單完成</span>

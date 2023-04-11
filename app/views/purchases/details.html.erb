@@ -22,8 +22,11 @@
             <div class="level">
               <div class="level-left">
                 <% order.ordered_items.each do |order_item| %>
-                  <%= order_item.item.name %> x
-                  <%= order_item.quantity %>,
+                  <% if order_item.item == nil %>
+                  <% else %>
+                    <%= order_item.item.name %> x
+                    <%= order_item.quantity %>,
+                  <% end %>
                 <% end %> 
               </div>
               <div class="level-right">

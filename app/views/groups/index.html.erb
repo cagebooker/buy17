@@ -38,11 +38,13 @@
                                 <div class="group-content">
                                     <%= link_to group_stores_path(g.id) do  %>
                                         <% if g.cover.attached? %>
-                                            <%= image_tag g.cover.variant(resize:'190x120')  %>
+                                            <div class="group-cover">
+                                                <%= image_tag g.cover.variant(resize:'600x400')  %>
+                                            </div>
+                                            
                                         <% else %>
                                             <img src="http://via.placeholder.com/188x108" alt="placeholder">
-                                        <% end %>
-                                        
+                                        <% end %> 
                                     <% end %>
                                     
                                 </div>
