@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
     before_action :set_group, only: [:edit, :update,:destroy, :showmember]
     def index 
         @user = current_user
+        @groups = current_user.groups.with_attached_cover
     end
     def new
         @group = Group.new
@@ -31,7 +32,7 @@ class GroupsController < ApplicationController
         @group = Group.find params[:id]
     end
     def showmember 
-
+        
     end
     def pending_purchases
         

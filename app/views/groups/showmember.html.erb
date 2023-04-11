@@ -1,14 +1,31 @@
 <div class="outsider">
-  <div class="box">
-    <div class="title is-5">
-      群組成員有：
+  <div class="columns">
+    <div class="column is-6">
+      <div class="box">
+        <div class="title is-5">
+          群組成員有：
+        </div>
+        
+        <% @group.users.each do |user| %>
+          <p class="mb-2">
+            <%= user.email%>
+            <% if user.email == @group.users.first.email%>
+              <i class="fa-solid fa-crown ml-2"></i>
+            <% end %>
+          </p>
+        <% end %>
+        
+      </div>
     </div>
-    
-    <% @group.users.each do |user| %>
-      <p class="mb-2">
-        <%= user.email %> 
-      </p>
-    <% end %>
-    
+    <div class="column is-2 is-offset-2">
+      <div class="title is-5">
+        <%= @group.name %>
+      </div>
+      <%= link_to '回到群組', group_stores_path(@group),class:'button is-small is-fullwidth mb-2' %>
+      <%= link_to group_invite_path(@group),class:'button is-small is-fullwidth' do  %>
+          邀請其他使用者
+      <% end %>
+    </div>
   </div>
+  
 </div>
