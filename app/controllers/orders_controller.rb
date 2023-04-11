@@ -13,12 +13,11 @@ class OrdersController < ApplicationController
         end
     end
     def create
-        # @group = Group.find
+        @group = Group.find params[:group_id]
         @order = @purchase.orders.new orders_params
         @order.user_id = current_user.id
         if @order.save
-
-            redirect_to purchase_path(@purchase)
+            redirect_to group_purchases_path(@group)
             # redirect_to group_purchases_path(@group)
         else
             render json: { 'adb': @order.errors.full_messages, 'userid': current_user.id}

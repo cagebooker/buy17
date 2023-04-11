@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
     def index 
         # render json: params
         @group = Group.find(params[:group_id])
-        @purchases = @group.purchases.where("end_time > ?", Time.now)
+        @purchases = @group.purchases.where("end_time > ?", Time.now).includes(:orders)
     end
     def new
         @group = Group.find params[:group_id]
@@ -22,6 +22,14 @@ class PurchasesController < ApplicationController
             redirect_to group_purchases_path
         else
             render json: {'123':@purchase.errors.full_messages}
+        end
+    end
+    def destroy
+        # render json: params
+        @group = Group.find(params[:group_id])
+        @purchase = Purchase.find(params[:id])
+        if @purchase.destroy
+            redirect_to group_purchases_path(@group), notice: '本次團購已經取消'
         end
     end
     def done 

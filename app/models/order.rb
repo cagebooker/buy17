@@ -17,4 +17,7 @@ class Order < ApplicationRecord
         end
         t_price
     end
+    
+    scope :real_order, -> { where(self.total_price != 0)}
+
 end

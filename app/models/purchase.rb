@@ -26,7 +26,16 @@ class Purchase < ApplicationRecord
         end
         income
     end
-
+    def count_orders
+        count = 0
+        self.orders.each do |order|
+            if order.total_price == 0 
+            else 
+                count += 1
+            end 
+        end
+        count
+    end
     scope :finished_purchase, -> { where(state:"finished")}
     scope :refunded_purchase, -> { where(state:"refunded")}
     scope :pending_purchase, -> { where("end_time > ?", Time.now)}

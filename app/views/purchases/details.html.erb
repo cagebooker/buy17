@@ -15,8 +15,10 @@
         </div>
         
         <% @purchase.orders.each do |order| %>
-          <div class="divider"></div>
-          <div class="titel is-5">點餐人：<%= order.user.email %></div>
+          <% if order.total_price == 0 %>
+          <% else %>
+            <div class="divider"></div>
+            <div class="titel is-5">點餐人：<%= order.user.email %></div>
             <div class="level">
               <div class="level-left">
                 <% order.ordered_items.each do |order_item| %>
@@ -26,9 +28,11 @@
               </div>
               <div class="level-right">
                 金額：
-            <%= order.total_price %>
+                  <%= order.total_price %>
               </div>
             </div>
+            
+          <% end %>
             
         <% end %>
         <div class="divider"></div>
