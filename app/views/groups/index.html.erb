@@ -18,38 +18,52 @@
 
         </div>
         <div class="column is-8 is-offset-1 ">
-            <div class="columns is-multiline">
-                <% current_user.groups.each do |g| %>
-                    <div class="column is-4">
-                        <div class="group-container ">
-                            <div class="group-title">
-                                <span class="image-fix mr-2">
-                                    <% if g.cover.attached? %>
-                                        <%= image_tag g.cover.variant(resize:'40x40')  %>
-                                    <% else %>
-                                        <img src="http://via.placeholder.com/24x24" alt="placeholder">
-                                    <% end %>
-                                </span>
-                                
-                                <span class="title is-5"><%= g.name %></span>
-            
-                            </div>
-                            <div class="group-content">
-                                <%= link_to group_stores_path(g.id) do  %>
-                                    <% if g.cover.attached? %>
-                                        <%= image_tag g.cover.variant(resize:'190x120')  %>
-                                    <% else %>
-                                        <img src="http://via.placeholder.com/188x108" alt="placeholder">
+            <% if current_user.groups.present? %>
+                <div class="columns is-multiline">
+                    <% current_user.groups.each do |g| %>
+                        <div class="column is-4">
+                            <div class="group-container ">
+                                <div class="group-title">
+                                    <span class="image-fix mr-2">
+                                        <% if g.cover.attached? %>
+                                            <%= image_tag g.cover.variant(resize:'40x40')  %>
+                                        <% else %>
+                                            <img src="http://via.placeholder.com/24x24" alt="placeholder">
+                                        <% end %>
+                                    </span>
+                                    
+                                    <span class="title is-5"><%= g.name %></span>
+                
+                                </div>
+                                <div class="group-content">
+                                    <%= link_to group_stores_path(g.id) do  %>
+                                        <% if g.cover.attached? %>
+                                            <%= image_tag g.cover.variant(resize:'190x120')  %>
+                                        <% else %>
+                                            <img src="http://via.placeholder.com/188x108" alt="placeholder">
+                                        <% end %>
+                                        
                                     <% end %>
                                     
-                                <% end %>
-                                
+                                </div>
+                            </div>  
+                        </div>
+                    <% end %>
+                    
+                </div>
+            <% else %>
+                <div class="title is-5">歡迎來到17團購！</div>
+                 <div class="group-content">
+                    <%= link_to new_group_path do  %>
+                        <div class="card card-group-fix">
+                            <div class="title is-6 center">
+                                + 點我 建立一個新群組
                             </div>
-                        </div>  
-                    </div>
-                <% end %>
-                
-            </div>
+                        </div>
+                    <% end %>
+                    
+                </div>
+            <% end %>
             
             
         </div>

@@ -23,13 +23,13 @@ class Admin::StoresController < ApplicationController
   def create
     @store = current_user.stores.new store_params
     if @store.save
-        redirect_to admin_stores_path, :notice => 'Store was successfully created.'
+        redirect_to admin_stores_path, :notice => '成功建立新的店家.'
     else
         render 'new'
     end
   end
   def edit
-
+    @items = @store.items
   end
   def update
     @store.update store_params
