@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require 'openai'
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -19,5 +19,7 @@ module Buy17
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Taipei'
+    config.autoload_paths << "#{Rails.root}/app/services"
+    # config.openai_api_key = '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'
   end
 end

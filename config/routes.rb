@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   # 個人團購歷史紀錄
   get '/purchases_history' => 'purchases#history', as: 'purchases_history'
 
+  # openai
+  post '/generate_text', to: 'groups#generate_text'
+  post '/api/openai' => 'openai#api'
+
+
   namespace :admin do 
     resources :stores do 
       post 'online', as: 'online'

@@ -37,6 +37,19 @@ gem 'aasm', '~> 5.5'
 #form
 gem 'cocoon'
 
+# 客製化網址
+gem 'friendly_id', '~> 5.0.0'
+gem "babosa"
+
+# open ai
+gem 'ruby-openai'
+gem 'openai'
+
+gem 'faraday'
+gem 'figaro'
+# API
+gem 'httparty'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

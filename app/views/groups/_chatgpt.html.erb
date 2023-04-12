@@ -1,0 +1,10 @@
+<div class="box ai">
+  <%= form_tag({ controller: 'groups', action: 'generate_text' }, method: 'post') do %>
+    <%= text_area_tag :prompt, '', cols: 80, rows: 10 %>
+    <%= submit_tag 'Generate' %>
+  <% end %>
+
+  <div>
+    <%= @response %>
+  </div>
+</div>

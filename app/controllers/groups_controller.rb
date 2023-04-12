@@ -37,9 +37,16 @@ class GroupsController < ApplicationController
     def pending_purchases
         
     end
+
+    def generate_text
+        # render json: params[:prompt]
+        client = ChatgptService.new(params[:prompt])
+        @response = client.call
+        # @response = ChatgptService.call(params[:message])
+    end
     private
     def set_group
-        @group = Group.find params[:id]
+        @group = Group.friendly.find params[:id]
     end
     def group_params
         params.require(:group).permit(:name, :cover)

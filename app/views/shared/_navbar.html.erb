@@ -1,6 +1,6 @@
-<nav class="navbar style-1" role="navigation" aria-label="main navigation">
+<nav class="navbar dark-mode" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item style-1" href="/">
+    <a class="navbar-item-logo" href="/">
       <span class="logo-title " style="margin-right:6px;">17團購</span>
       <i class="fa-solid fa-cart-shopping fa-xl"></i>
     </a>
@@ -14,16 +14,19 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to '店家一覽', '/stores', class:'navbar-item style-1' %>
-      <%= link_to '團購紀錄', purchases_history_path, class:'navbar-item style-1' %>
       
-      <a class="navbar-item style-1">
-        訂閱
-      </a>  
+      
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
+      <%= link_to '/stores', class:'navbar-item navbar-item-icon' do %>
+        <i class="fa-solid fa-store"></i>
+      <% end %>
+      <%= link_to purchases_history_path, class:'navbar-item navbar-item-icon' do %>
+        <i class="fa-solid fa-file icon-fix-1"></i>
+      <% end %>
+ 
+      <div class="navbar-item-kg">
         <div class="buttons">
           <% if user_signed_in? %>
             <div class="dropdown is-hoverable">
@@ -46,6 +49,7 @@
                     <% end %>  
                   <% end %>
                   <%= link_to '進行中的團購',pending_purchases_path,class:'dropdown-item' %>
+                  <%= link_to '切換模式','#',class:'dropdown-item toggle-mode' %>
                   <hr class="dropdown-divider">
                   <% if user_signed_in? %>
                     <%= link_to '登出', destroy_user_session_path, method: :delete, class:'dropdown-item'  %>

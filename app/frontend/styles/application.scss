@@ -232,6 +232,22 @@ body{
 .box-mb{
     margin-bottom: 20px;
 }
+.group-icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;;
+}
+.group-container-dark{
+    height: 280px;
+    overflow: hidden;
+    .group-cover{
+        border-radius: 10px;
+    }
+    
+}
+
 .group-container{
     margin-bottom: 20px;
     // border: 1px solid #e5e5e5;
@@ -243,12 +259,19 @@ body{
     overflow-y: hidden;
 }
 .group-cover{
-    width:188px;
-    height:108px;
+    width:367px;
+    height:200px;
     overflow: hidden;
 }
 .group-title{
     padding-left: 0px !important;
+}
+.group-name{
+    position: relative;
+    transform: translate(0px, -8px);
+    padding: 4px 4px;
+    height: 40px;
+    display: inline-block;
 }
 .is-alarm{
     color:rgb(220, 59, 59);
