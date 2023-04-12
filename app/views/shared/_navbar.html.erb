@@ -14,24 +14,50 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      
-      
     </div>
 
     <div class="navbar-end">
-      <%= link_to '/stores', class:'navbar-item navbar-item-icon' do %>
-        <i class="fa-solid fa-store"></i>
-      <% end %>
-      <%= link_to purchases_history_path, class:'navbar-item navbar-item-icon' do %>
-        <i class="fa-solid fa-file icon-fix-1"></i>
-      <% end %>
- 
+      
+      <div class="dropdown is-hoverable mr-2 dropdown-positon">
+        <div class="dropdown-trigger">
+          <button class="navbar-item navbar-item-icon" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <%= link_to '/stores', class:'nav-icon-fix' do %>
+              <i class="fa-solid fa-store fa-xl"></i>
+            <% end %>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content dropdown-content-fix">
+            <div class="icon-hover">店家</div>
+            <div class="dropdown-item ">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown is-hoverable mr-2 dropdown-positon">
+        <div class="dropdown-trigger">
+          <button class="navbar-item navbar-item-icon" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <%= link_to purchases_history_path, class:'nav-icon-fix' do %>
+              <i class="fa-solid fa-file icon-fix-1 fa-xl"></i>
+            <% end %>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content dropdown-content-fix">
+            <div class="icon-hover">紀錄</div>
+            <div class="dropdown-item ">
+              
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="navbar-item-kg">
         <div class="buttons">
           <% if user_signed_in? %>
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button class="button button-fix" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span><%= current_user.email %></span>
                   <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>

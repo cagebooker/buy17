@@ -43,6 +43,7 @@ body.dark-mode{
       padding-top: 10px !important;
       margin-left: 20px;
       margin-right: 20px;
+      // border-radius: 20px !important;
       &:hover{
         background-color: none !important;
       }
@@ -56,18 +57,7 @@ body.dark-mode{
         background-color: $gray !important;
       }
     }
-    .navbar-item-icon{
-      width: 40px !important;
-      height: 40px !important;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      
-      .icon-fix-1{
-        position: relative;
-        transform: translateX(4px);
-      }
-    }
+    
     .navbar-item-logo{
       color: inherit !important;
       // border: 1px solid $white !important;
@@ -81,6 +71,6 @@ body.dark-mode{
     overflow: hidden;
     // border-radius: 10px;
   }
-  
+
 }
 
