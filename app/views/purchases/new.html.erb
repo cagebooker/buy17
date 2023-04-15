@@ -3,11 +3,11 @@
         
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title is-4">開啟新團購</h1>
-                <div class="box">
+                <h1 class="title is-4 title-dark">開啟新團購</h1>
+                <div class="box background-light-gray border-white">
                     <%= form_for [@group,@purchase] do |f| %>
                         <div class="field">
-                            <%= f.label :time_perid,'時段', class:'label' %>
+                            <%= f.label :time_perid,'時段', class:'label title-dark' %>
                             <div class="control">
                                 <span class="select">
                                    <%= f.select :time_period, ['早餐','午餐','晚餐','下午茶','水果','飲料'] %> 
@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <%= f.label :store_id,'店家', class:'label' %>
+                            <%= f.label :store_id,'店家', class:'label title-dark' %>
                             <div class="control">
                                 <span class="select">
                                    <%= f.collection_select :store_id, @group.stores.online_store, :id, :name %> 
@@ -23,13 +23,14 @@
                             </div>
                         </div>
                         <div class="field">
-                            <%= f.label :end_time,'截止日期', class:'label' %>
+                            <%= f.label :end_time,'截止日期', class:'label title-dark' %>
                             <div class="control">
                                 <%= f.datetime_select :end_time %>
                             </div>
                         </div>
+                        <br>
                         <div class="field">
-                            <%= f.submit '確定', class:'button style-1' %>
+                            <%= f.submit '確定', class:'button button-dark' %>
                         </div>
                     <% end %>
                 </div>

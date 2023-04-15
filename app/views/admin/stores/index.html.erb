@@ -1,10 +1,10 @@
-<div class="outsider">
+<div class="outsider backgroun-border-white">
   <div class="columns">
     <div class="column is-6">
       <div class="title is-5">您管理的店家：</div>
       <% if @stores.present? %>
         <% @stores.each do |store| %>
-          <div class="card columns">
+          <div class="card columns card-dark border-white">
             <div class="card-image column is-6">
               <%= link_to '#' do  %>
                 <%= link_to edit_admin_store_path(store) do %>
@@ -23,7 +23,7 @@
               <div class="media">
                 <div class="media-content">
                   <%= link_to edit_admin_store_path(store) do %>
-                    <p class="title is-4">
+                    <p class="title is-5">
                       <%= store.name %> | 
                       <% if store.state == 'online' %>
                         <span class="state-online title is-6">上線</span>
@@ -59,10 +59,10 @@
        <div class="title is-5 mb-2">
         您的訂單：
        </div>
-       <div class="box height-fix-1">
+       <div class="box height-fix-1 background-black border-white">
         今日(<%= Time.now.strftime("%Y/%m/%d") %>)未完成訂單： 
         <% @purchases_pending.each do |purchase| %>
-          <div class="box">
+          <div class="box background-light-gray">
             <%= purchase.store.name %> | 
             <% if purchase.state == 'pending' %>
               <span class="state-p">等待中</span>
@@ -92,20 +92,25 @@
           </div>
         <% end %>
         
+      
        
         
-       </div>
-       <div class="box height-fix-2">
+      </div>
+      <div class="title is-5 title-dark">
         已完成訂單：
+      </div>
+      <div class="box background-black border-white height-fix-2">
         <% @purchases_done.each do |purchase| %>
-          <div class="box">
+          <div class="box background-light-gray">
             <span class="state-f">已完成</span>
             <span>訂單編號： <%= purchase.id %></span>
             <span>總金額： <%= purchase.total_income %></span>
           </div>
         <% end %>
-        
-       </div>
+      </div>
+    </div>
+    <div class="column is-3">
+      
     </div>
   </div>
 </div>

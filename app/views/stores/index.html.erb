@@ -4,7 +4,7 @@
             <div class="title is-4">您的店家</div>
             <% if @stores.present? %>
                 <% @stores.each do |store| %>
-                    <div class="card padding-fix-1 card-mb card-height">
+                    <div class="card padding-fix-1 card-mb card-height card-dark">
                         <div class="columns gapless">
                             <div class="column is-5 padding-none">
                                 <div class="card-content card-content-fix has-border-right">
@@ -53,10 +53,10 @@
                                 </div>
                             </div>
                             <div class="column is-7 padding-none">
-                                <div class="store-menu store-menu-fix">
-                                    <div class="titlebar has-text-centered style-gray">菜單</div>
+                                <div class="store-menu store-menu-fix store-menu-dark">
+                                    <div class="titlebar has-text-centered menubar-dark">菜單</div>
 
-                                    <div class="card-content card-content-fix overflow-fix">
+                                    <div class="card-content card-content-fix overflow-fix card-content-dark">
                                         <div class="columns is-multiline">
                                             <% store.items.each do |item| %>
                                                 <div class="column is-4">
@@ -66,9 +66,9 @@
                                                             <img src="http://via.placeholder.com/1600x900" alt="placeholder">
                                                         </figure>
                                                         </div>
-                                                        <div class="padding-fix">
-                                                        <span><%= item.name %></span>
-                                                        <span class="title is-6">$<%= item.price %></span>
+                                                        <div class="padding-fix item-content-dark">
+                                                            <span><%= item.name %></span>
+                                                            <span class="title is-6">$<%= item.price %></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,7 +90,7 @@
                 <%= @group.name  %>
             </div>
             <div class="divider"></div>
-            <%= link_to group_purchases_path,class:'btn style-1' do  %>
+            <%= link_to group_purchases_path,class:'btn' do  %>
                 正在進行的團購！
             <% end %>
             <%= link_to purchases_done_path(@group),class:'btn' do  %>

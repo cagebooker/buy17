@@ -17,12 +17,28 @@
     </div>
 
     <div class="navbar-end">
-      
       <div class="dropdown is-hoverable mr-2 dropdown-positon">
         <div class="dropdown-trigger">
-          <button class="navbar-item navbar-item-icon" aria-haspopup="true" aria-controls="dropdown-menu4">
-            <%= link_to '/stores', class:'nav-icon-fix' do %>
-              <i class="fa-solid fa-store fa-xl"></i>
+          <button class="navbar-item navbar-item-icon navbar-item-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <a href="#" class=' nav-icon-fix icon-fix-1' @click="changeMode">
+              <i class="fa-solid fa-repeat fa-xl icon-positon-mode"></i>
+            </a>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content dropdown-content-fix-1">
+            <div class="icon-hover">切換模式</div>
+            <div class="dropdown-item ">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown is-hoverable mr-2 dropdown-positon">
+        <div class="dropdown-trigger">
+          <button class="navbar-item navbar-item-icon navbar-item-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <%= link_to '/stores', class:'nav-icon-fix icon-fix-1' do %>
+              <i class="fa-solid fa-store fa-xl icon-position-fix"></i>
             <% end %>
           </button>
         </div>
@@ -37,9 +53,9 @@
       </div>
       <div class="dropdown is-hoverable mr-2 dropdown-positon">
         <div class="dropdown-trigger">
-          <button class="navbar-item navbar-item-icon" aria-haspopup="true" aria-controls="dropdown-menu4">
-            <%= link_to purchases_history_path, class:'nav-icon-fix' do %>
-              <i class="fa-solid fa-file icon-fix-1 fa-xl"></i>
+          <button class="navbar-item navbar-item-icon navbar-item-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+            <%= link_to purchases_history_path, class:'nav-icon-fix icon-fix-1' do %>
+              <i class="fa-solid fa-file fa-xl icon-position-record"></i>
             <% end %>
           </button>
         </div>
@@ -75,8 +91,9 @@
                     <% end %>  
                   <% end %>
                   <%= link_to '進行中的團購',pending_purchases_path,class:'dropdown-item' %>
-                  <%= link_to '切換模式','#',class:'dropdown-item toggle-mode' %>
-                  <hr class="dropdown-divider">
+                  <a href="#" class='dropdown-item toggle-mode' @click="changeMode">切換模式</a>
+                  
+                    <hr class="dropdown-divider">
                   <% if user_signed_in? %>
                     <%= link_to '登出', destroy_user_session_path, method: :delete, class:'dropdown-item'  %>
                   <% else %>

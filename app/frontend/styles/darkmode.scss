@@ -1,9 +1,9 @@
-$black: #0F0F0F;
+$black: #1F2124;
 $gray: #303030;
+$light_gray: #282828;
 $white: #F1F1F1;
-.border-white{
-  border: 1px solid $white;
-}
+$border_white: #8f8f8f;
+
 .height-center{
   position: relative;
   top: 50%;
@@ -15,6 +15,24 @@ body.dark-mode{
   color: $white;
   div{  //沒有繼承成功
     color: inherit !important;
+  }
+  .background-light-gray{
+    background-color: $light_gray;
+  }
+  .background-border-white{
+    background-color: $border-white !important;
+  }
+  .background-black{
+    background-color: $black !important;
+  }
+  .color-white{
+    color: $white;
+  }
+  .border-white{
+    border: 1px solid $border-white;
+  }
+  .color-yellow{
+    color: #EECC8D !important;
   }
   .btn{
     color: $white;
@@ -39,16 +57,7 @@ body.dark-mode{
       color: inherit !important;
       
     }
-    .navbar-item-kg{
-      padding-top: 10px !important;
-      margin-left: 20px;
-      margin-right: 20px;
-      // border-radius: 20px !important;
-      &:hover{
-        background-color: none !important;
-      }
-      
-    }
+    
     .navbar-item{
       color: inherit !important;
       border-radius: 50%;
@@ -57,20 +66,48 @@ body.dark-mode{
         background-color: $gray !important;
       }
     }
-    
-    .navbar-item-logo{
-      color: inherit !important;
-      // border: 1px solid $white !important;
-      position: relative;
-      padding-top: 10px;
-      margin-left: 40px;
+    .nav-icon-fix{
+      color: $white;
+      // transform: translateX(-2px);
+      &:hover{
+          color: $white;
+      }
     }
+    
   }
   .group-container-dark{
     height: 280px;
     overflow: hidden;
     // border-radius: 10px;
   }
-
+  .card-dark{
+    background-color: $gray !important;
+    color: $white !important;
+    // border: 1px solid $border_white;
+    .title{
+      color: $white !important; 
+    }
+    .subtitle{
+      color: $border_white !important;
+    }
+    .menubar-dark{
+      background-color: $gray;
+      padding-top: 6px;
+    }
+    .card-content-dark{
+      background-color: $border_white;
+    }
+    .item-content-dark{
+      background-color: $gray;
+      border-radius: 0px 0px 4px 4px;
+    }
+    .store-menu-dark{
+      border-left: 1px solid $border_white !important;
+    }
+  }
+  .button-dark{
+    background-color: $black;
+    color: $white;
+  }
 }
 

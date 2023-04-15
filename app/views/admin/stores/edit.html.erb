@@ -1,13 +1,13 @@
 <div class="outsider">
-  <h1 class="title is-4">更新店家資訊 </h1>
+  <h1 class="title is-4 title-dark">更新店家資訊 </h1>
   <div class="columns">
     <div class="column is-9">
-      <div class="box">
+      <div class="box background-light-gray border-white">
         <%= render 'form' %>
       </div>
     </div>
     <div class="column is-3">
-      <div class="box">
+      <div class="box background-light-gray">
         <div class="title is-5">
           <%= @store.name %> |
           <% if @store.state == 'online' %>
@@ -19,19 +19,19 @@
           <% end %>
         </div>
         <% if @store.state == 'online' %>
-          <%= link_to '關閉店家',admin_store_offline_path(@store),method: :post,class:'button is-dark is-outlined is-small' %>
+          <%= link_to '關閉店家',admin_store_offline_path(@store),method: :post,class:'button button-dark is-dark is-small' %>
           <%= link_to '準備中',admin_store_pending_path(@store),method: :post,class:'button is-info is-small is-outlined' %>
         <% elsif @store.state == "offline" %>
           <%= link_to '店家上線',admin_store_online_path(@store),method: :post,class:'button is-primary is-small is-outlined' %>
         <% else %>
           <%= link_to '店家上線',admin_store_online_path(@store),method: :post,class:'button is-primary is-small is-outlined' %>
-          <%= link_to '店家關閉',admin_store_offline_path(@store),method: :post,class:'button is-dark is-small is-outlined' %>
+          <%= link_to '店家關閉',admin_store_offline_path(@store),method: :post,class:'button button-dark is-small is-outlined' %>
         <% end %>
       </div>
-      <div class="box box-height-fix">
+      <div class="box box-height-fix background-light-gray">
         <div class="title is-5">
           
-          <%= link_to admin_store_items_path(@store),class:'button is-small is-fullwidth' do %>
+          <%= link_to admin_store_items_path(@store),class:'button button-dark is-small is-fullwidth' do %>
             <span>管理菜單</span>
           <% end %>
           <div class="divider"></div>

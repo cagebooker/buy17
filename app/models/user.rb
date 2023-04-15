@@ -12,4 +12,18 @@ class User < ApplicationRecord
   has_many :orders
 
   has_many :messages
+
+  include AASM
+    aasm column: :mode do
+      state :light, initial: true
+      state :dark
+    
+      event :to_dark do
+        transitions from: :light, to: :dark
+      end
+      event :to_light do
+        transitions from: :dark, to: :light
+      end
+      
+    end
 end

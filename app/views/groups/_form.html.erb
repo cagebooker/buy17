@@ -1,12 +1,12 @@
 <%= form_for @group do |f| %>
     <div class="field">
-        <%= f.label :name, '群組名稱',class:'label' %>
+        <%= f.label :name, '群組名稱',class:'label title-dark' %>
         <div class="control">
-            <%= f.text_field :name ,class:'input' %>
+            <%= f.text_field :name ,class:'input is-small background-light-gray color-white' %>
         </div>
     </div>
     <div class="field">
-        <%= f.label :cover, '群組圖片上傳',class:'label' %>
+        <%= f.label :cover, '群組圖片上傳',class:'label title-dark' %>
         <div class="control mb-2">
             <%= f.file_field :cover %>
         </div>
@@ -25,6 +25,6 @@
     
     <div class="divider"></div>
     <div class="field">
-        <%= f.submit '送出', class:'button is-small style-1 is-fullwidth' %>
+        <%= f.submit '送出', class:'button is-small button-dark is-fullwidth' %>
     </div>
 <% end %>  

@@ -3,7 +3,7 @@
   <div class="title is-4">店家訂單總覽：</div>
   <% @stores.each do |store| %>
     <div class="divider"></div>
-    <p class="title is-5">
+    <p class="title is-5 title-dark">
       <%= store.name %>
     </p>
     <div class="columns ">
@@ -12,7 +12,7 @@
             <% if purchase.state == 'pending' %>
               
             <% elsif purchase.state === 'finished' %>
-              <div class="box">
+              <div class="box background-light-gray">
                 <%= purchase.store.name %> | <span class="state-f">已完成</span>
                 
                 <br>
@@ -35,7 +35,7 @@
                     <% end %>
                   </div>
                   <div class="level-right">
-                    <span class="title is-6">
+                    <span class="title is-6 title-dark">
                       收入：  <%= purchase.total_income %>
                     </span> 
                   </div>
@@ -47,7 +47,7 @@
           <% end %>
         </div>
         <div class="column is-3">
-          <div class="box">
+          <div class="box background-light-gray border-white">
             <p>本月訂單量： <%= store.purchases.finished_purchase.count %></p>
             <p>本月收益： <%= store.total_income %></p>
             <p>退回訂單： <%= store.purchases.refunded.count %></p>

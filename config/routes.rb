@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   post '/generate_text', to: 'groups#generate_text'
   post '/api/openai' => 'openai#api'
 
+  # setMode
+  get '/set_mode', to: 'application#set_mode'
+  post '/set_mode', to: 'application#change_mode'
 
   namespace :admin do 
     resources :stores do 

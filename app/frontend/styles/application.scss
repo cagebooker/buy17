@@ -8,6 +8,7 @@ body{
     // padding-bottom: 100px !important;
     min-height: 100vh;
     position: relative;
+    // padding-bottom: 50px !important;
 }
 .outsider{
     width: 100%;
@@ -151,8 +152,8 @@ body{
     }
 }
 .style-3-fix{
-    background-color: rgba($color: #2b2b2b, $alpha: 1.0) !important;
-    color: white !important;
+    background-color: #1F2124 !important;
+    color: #EECC8D !important;
 }
 .zindex-h{
     z-index: 100 !important;
@@ -332,9 +333,7 @@ body{
         color: white !important;
     }
 }
-.button-fix{
-    border-radius: 50px !important;
-}
+
 .navbar-item-icon{
     width: 40px !important;
     height: 40px !important;
@@ -342,11 +341,42 @@ body{
     top: 50%;
     border: none;
     transform: translateY(-50%);
-    
-    .icon-fix-1{
-      position: relative;
-      transform: translateX(4px);
+    border-radius: 50%;
+    &:hover{
+        background-color: $gray !important;
     }
+    .icon-fix-1{
+      color:#2b2b2b;
+      position: relative;
+    //   transform: translateX(4px);
+      
+    }
+    .icon-position-fix{
+      transform: translateX(-2px);
+    }
+    .icon-positon-mode{
+      transform: translateX(-2px);
+    }
+    .icon-position-record{
+      transform: translateX(2px);
+    }
+}
+.navbar-item-light{
+    background-color: white !important;
+    
+}
+.navbar-item-kg{
+    padding-top: 10px !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    // border-radius: 20px !important;
+    &:hover{
+      background-color: none !important;
+    }
+    
+  }
+.button-fix{
+    border-radius: 50px !important;
 }
 .icon-hover{
     font-size: 14px;
@@ -354,32 +384,49 @@ body{
     // margin-left: 4px;
     transform: translate(10px, -6px);
 }
+.icon-hover-1{
+
+}
 .dropdown-content-fix{
     width: 48px;
     height: 30px;
     background-color: #c8c8c8c8 !important;
-}  
+} 
+.navbar-item-logo{
+    color: inherit !important;
+    // border: 1px solid $white !important;
+    position: relative;
+    padding-top: 10px;
+    margin-left: 40px;
+}
+.dropdown-content-fix-1{
+    width: 74px;
+    height: 30px;
+    background-color: #c8c8c8c8 !important;
+    transform: translate(-14px, 0px);
+}   
 .logo-title {
     font-size: 1.4rem;
     font-weight: bold;
 }
 #board{
     min-height: calc(100vh - 40px);
+    padding-bottom: 40px
 }
-.nav-icon-fix{
-    color: $white;
-    transform: translateX(-2px);
-    &:hover{
-        color: $white;
-    }
-}
+
 .dropdown-positon{
     transform: translate(0px, 5px);
 }
 .footer-kg {
-    height: 40px !important;
+    // height: 40px !important;
     background-color: #ffffff;
     color: $black;
+    // position: absolute;
+    // bottom: 50px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px !important;
+    margin-top: 50px;
 }
 .store-section{
     width: 70%;

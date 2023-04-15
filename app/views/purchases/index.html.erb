@@ -1,13 +1,13 @@
 <div class="outsider">
-  <h1 class="title is-4">
+  <h1 class="title is-4 title-dark">
     進行中的團購
-    <%= link_to '回到群組', group_stores_path, class:'button is-small ml-2' %>
+    <%= link_to '回到群組', group_stores_path, class:'button is-small ml-2 button-dark' %>
   </h1>
   <% if @purchases.present? %>
     <div class="columns is-multiline">
       <% @purchases.each do |purchase| %>
         <div class="column is-4">
-          <div class="card">
+          <div class="card card-dark">
             <div class="card-image">
               <figure class="image is-2by1">
                 <% if purchase.store.cover.attached? %>
@@ -42,7 +42,7 @@
                 <div class="columns">
                   <div class="column is-4">
                     <div class="title is-6">
-                      <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small' do %>
+                      <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small button-dark' do %>
                         <span>團購明細</span>
                       <% end %>
                     </div>
