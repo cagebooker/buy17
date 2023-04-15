@@ -2,15 +2,15 @@
   <div class="title is-5">
     團購的明細：
   </div>
-  <div class="columns">
+  <div class="columns ">
     <div class="column is-8">
-      <div class="box">
+      <div class="box background-black border-white">
         <div class="level">
           <div class="level-left">
             <div class="title is-5">訂單編號：<%= @purchase.id %></div>
           </div>
           <div class="level-right">
-            <span class="title is-6">發起人：<%= User.find(@purchase.user_id).email %></span>
+            <span class="title is-6 title-dark">發起人：<%= User.find(@purchase.user_id).email %></span>
           </div>
         </div>
         
@@ -55,7 +55,7 @@
       </div>
      
       <div class="divider"></div>
-      <%= link_to '回到群組', group_stores_path(@group), class:'button is-fullwidth is-small' %>
+      <%= link_to '回到群組', group_stores_path(@group), class:'button button-dark is-fullwidth is-small' %>
     </div>
   </div>
   
