@@ -3,15 +3,15 @@
         <div class="column is-3">
             <%= link_to '#', class:'btn' do %>
                 <i class="fa-solid fa-user-group icon-fix"></i>
-                <span> 群組</span>
+                <span><%= t(:群組) %></span>
             <% end %>
             <%= link_to new_group_path, class:'btn' do %>
                 <i class="fa-regular fa-plus icon-fix"></i>
-                <span>建立新群組</span>
+                <span><%= t(:建立新群組) %></span>
             <% end %>
             <%= link_to pending_purchases_path, class:'btn' do  %>
                 <i class="fa-solid fa-bag-shopping icon-fix"></i>
-                <span>現在進行的團購</span>
+                <span><%= t(:進行中的團購) %></span>
             <% end %>
 
             <div class="divider"></div>
@@ -57,12 +57,12 @@
                     
                 </div>
             <% else %>
-                <div class="title is-5">歡迎來到17團購！</div>
+                <div class="title is-5"><%= t(:歡迎來到17團購) %>!</div>
                  <div class="group-content">
                     <%= link_to new_group_path do  %>
                         <div class="card card-group-fix">
                             <div class="title is-6 center">
-                                + 點我 建立一個新群組
+                                + <%= t(:點我建立一個新群組) %>
                             </div>
                         </div>
                     <% end %>

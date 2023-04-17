@@ -20,6 +20,8 @@ module Buy17
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Taipei'
     config.autoload_paths << "#{Rails.root}/app/services"
+    config.i18n.available_locales = ["en", "zh-TW"]
+    config.i18n.default_locale = "zh-TW"
     # config.openai_api_key = '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'
   end
 end
