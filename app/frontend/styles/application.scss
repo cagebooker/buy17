@@ -612,3 +612,14 @@ body{
         transform: translateX(50px);
     }
 }
+.title-chatgpt{
+    cursor: pointer;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: 0.5s;
+    
+    &:hover{
+        border: 1px solid $gray;
+    }
+}
