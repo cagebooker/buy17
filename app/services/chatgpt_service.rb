@@ -20,7 +20,7 @@ class ChatgptService
     body = {
       model:'text-davinci-003',
       # messages: [{ role: 'assistant', content: message }],
-      prompt: message
+      prompt: message,
       max_tokens: 600,
       temperature: 0
     }

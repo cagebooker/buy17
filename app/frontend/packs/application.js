@@ -18,7 +18,10 @@ import '../styles/index'
 import "cocoon-js-vanilla";
 
 import Vue from 'vue/dist/vue.esm';
-import orderitem from 'components/orderItem.vue'
+import store from '../stores/store.js';
+import orderitem from 'components/orderItem.vue';
+
+import axios from 'axios';
 
 
 
@@ -28,10 +31,20 @@ document.addEventListener("turbolinks:load", function(event){
     if(el){
       new Vue({
         el,
+        store,
         data:{
           menu: false,
           orderItem:true,
           darkMode: false,
+          problem: '',
+          ans: '123',
+          chatstate: false,
+        },
+        computed:{
+          answers(){
+            
+            return this.$store.state.answers
+          }
         },
         methods:{
           orderCancel(){
@@ -72,32 +85,40 @@ document.addEventListener("turbolinks:load", function(event){
                 }
               }); 
             }
+          },
+          chatgpt(evt){
+            evt.preventDefault();
+            this.$store.dispatch('chatgpt',{problem: this.problem});
+            this.problem = '' ;
+          },
+          startChatGpt(evt){
+            evt.preventDefault();
+            this.chatgpt != this.chatgpt
           }
         },
         components:{orderitem},
 
         mounted(){
-          // console.log('mounted');
-          // Rails.ajax({
-          //   url: '/set_mode',
-          //   type: 'get',
-          //   dataType: 'json',
-          //   success: res => {
-          //     console.log(res)
-          //     if(res.mode == "light"){
-          //       this.darkMode = false;
-          //       // console.log("darkmode right now ? "+this.darkMode);
-          //       document.getElementById("body").classList.remove("dark-mode");
-          //     }else{
-          //       this.darkMode = true;
-          //       // console.log(this.darkMode);
-          //       document.getElementById("body").classList.add("dark-mode");
-          //     }
-          //   },
-          //   error: err => {
-          //     console.log(err)
-          //   }
-          // }); 
+          /*** 
+          axios.post('https://api.openai.com/v1/completions', {
+            model:'text-davinci-003',
+            // messages: [{ role: 'assistant', content: message }],
+            prompt: "How old are you?",
+            max_tokens: 600,
+            temperature: 0
+          }, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': "Bearer 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"
+            }
+          })
+            .then(function (response) {
+              console.log(response.data.choices[0].text);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          ***/
           
         },
         beforeMount(){

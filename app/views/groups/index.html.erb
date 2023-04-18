@@ -15,7 +15,13 @@
             <% end %>
 
             <div class="divider"></div>
-
+            <div class="title is-5 title-dark" @click="chatstate = !chatstate">
+                CHAT GPT 來幫你
+            </div>
+            <div v-if="chatstate">
+                <%= render 'chatgpt' %>
+            </div>
+            
         </div>
         <div class="column is-9">
             <% if current_user.groups.present? %>

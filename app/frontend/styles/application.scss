@@ -424,7 +424,7 @@ body{
             background-color: $gray;
             width: 100%;
             // color:#EECC8D;
-        }
+        } 
     }
 }     
 .logo-title {
@@ -559,5 +559,56 @@ body{
     100%{
         left: 100%;
         opacity: 0.5;
+    }
+}
+.ai{
+    border: 1px solid $gray;
+    position: relative;
+    
+    .input-area{
+        .ai-input{
+            border-radius: 20px;
+            transform: translate(5px, -5px);
+        }
+        .ai-input-button{
+            border: 1px solid $gray;
+            width: 50px;
+            height: 40px;
+            display: inline-block;
+            color:rgb(41, 43, 42);
+            padding: 6px 8px;
+            transform: translate(-14px, -5px);
+            &:hover{
+                background-color: #1F2124;
+                color: $white;
+            }
+        }
+        
+    }
+    .answer-area{
+        height: 300px;
+        
+        padding: 10px;
+        overflow-y: scroll;
+        .area-padding{
+            padding: 5px;
+            // width: 100%;
+            height: 280px !important;
+            max-height: 280px !important;
+            overflow-y: scroll;;
+        }
+    }
+    
+    .answer{
+        padding: 2px 6px;
+        width: 160px;
+    }
+    .answer:nth-child(odd){
+        
+    }
+    .answer:nth-child(even){
+        // position: relative;
+        // right: 0px;
+        transform: translateX(50px);
     }
 }

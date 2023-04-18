@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
     def index 
         @user = current_user
         @groups = current_user.groups.with_attached_cover
+        # @message = 
     end
     def new
         @group = Group.new
@@ -42,6 +43,8 @@ class GroupsController < ApplicationController
         # render json: params[:prompt]
         client = ChatgptService.new(params[:prompt])
         @response = client.call
+        # @response
+        # render json: @response
         # @response = ChatgptService.call(params[:message])
     end
     private

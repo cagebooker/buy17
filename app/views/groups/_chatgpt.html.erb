@@ -1,10 +1,28 @@
-<div class="box ai">
-  <%= form_tag({ controller: 'groups', action: 'generate_text' }, method: 'post') do %>
-    <%= text_area_tag :prompt, '', cols: 80, rows: 10 %>
-    <%= submit_tag 'Generate' %>
-  <% end %>
 
-  <div>
-    <%= @response %>
+<div class="card card-dark ai">
+  <div class="answer-area ">
+    <div class="area-padding">
+      <div class="subtitle is-6 title-dark answer border" v-for="answer in answers">
+        {{answer}}
+      </div>
+    </div>
   </div>
+  <div class="divider"></div>
+  <div class="input-area">
+    <div class="columns gapless">
+      <div class="column is-9">
+        <input v-model="problem" class="input background-black color-white ai-input" placeholder="輸入想問的問題..."></a>
+      </div>
+      <div class="column is-3">
+        <a type="submit" @click="chatgpt" style="border-radius: 5px" class="ai-input-button color-white">
+          <div class="color-white">
+            送出
+          </div>
+          
+        </a>  
+      </div>
+    </div>
+    
+  </div>
+ 
 </div>

@@ -6,11 +6,13 @@ class ApplicationController < ActionController::Base
         # render json: params[:prompt]
         client = ChatgptService.new(params[:prompt])
         @response = client.call
+        # @response
+        # render json: @response
         # @response = ChatgptService.call(params[:message])
     end
-    # 在控制器中切換語言
-    
 
+
+    # 在控制器中切換語言
     def set_locale
         
         # 可以將 ["en", "zh-TW"] 設定為 VALID_LANG 放到 config/environment.rb 中
