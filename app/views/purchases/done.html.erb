@@ -27,6 +27,31 @@
             </div>
           </div>
       
+        <% elsif purchase.state == 'paid' %>
+          <div class="card card-dark">
+            <div class="card-image">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content mr-2">
+                    <%= link_to purchase_path(purchase),class:'mb-2' do %>
+                      <p class="title is-5">
+                        <%= purchase.store.name %> 
+                      </p>
+                    <% end %>
+                    <%= link_to '明細', purchase_details_path(purchase,{group_id: @group.id}), class:'button is-small button-dark mt-2' %>
+                  </div>
+                  <div class="media-content">
+                    <span class="state-paid mt-2">
+                      <%= purchase.state %>
+                      
+                    </span>
+                    <div class="">總金額：$ <%= purchase.total_income %> </div>
+                    <div class="">日期：<%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <% else %>
           <div class="card card-dark">
             <div class="card-image">

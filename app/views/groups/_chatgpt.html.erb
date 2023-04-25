@@ -11,12 +11,12 @@
   <div class="input-area">
     <div class="columns gapless">
       <div class="column is-9">
-        <input v-model="problem" class="input background-black color-white ai-input" placeholder="輸入想問的問題..."></a>
+        <input v-model="problem" class="input ai-input" placeholder="輸入想問的問題..."></a>
       </div>
       <div class="column is-3">
         <a type="submit" @click="chatgpt" style="border-radius: 5px" class="ai-input-button color-white">
           <div class="color-white">
-            送出
+            <%= t(:送出) %>
           </div>
           
         </a>  

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   # openai
   post '/generate_text', to: 'groups#generate_text'
 
+  #LINE Pay confirm
+  get '/purchase/:id/confirm', to: 'purchases#confirm'
 
   # setMode
   get '/set_mode', to: 'application#set_mode'
@@ -48,6 +50,7 @@ Rails.application.routes.draw do
       # resources :items
     end
     resources :purchases, only: [:new,:create,:index,:show,:destroy] do 
+      post 'line_pay', as:'line_pay'
       resources :orders
     end
   end

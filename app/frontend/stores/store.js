@@ -12,16 +12,21 @@ const store = new Vuex.Store({
   mutations: {
     // 設定修改狀態值的方法
     CHAT_GPT(state,res){
-      console.log(res);
+      // console.log(res);
       state.answers.unshift(res.problem);
       state.answers.unshift(res.res);
       
       // console.log(state.answers);
+    },
+    CHAT_GPT_QUESTION(state,res){
+      // console.log(res);
+      // state.answers.unshift(res);
     }
   },
   actions: {
     chatgpt({commit},data){
       // console.log(data.problem);
+      // commit('CHAT_GPT_QUESTION',data.problem);
       axios.post('https://api.openai.com/v1/completions', {
         model:'text-davinci-003',
         // messages: [{ role: 'assistant', content: message }],

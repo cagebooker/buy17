@@ -17,7 +17,7 @@
             <div class="divider"></div>
             <div class="title is-6 title-dark title-chatgpt" @click="chatstate = !chatstate">
                 <i class="fa-regular fa-comment "></i>
-                CHAT GPT 來幫你
+                CHAT GPT <%= t(:來幫你) %>
             </div>
             <div v-if="chatstate">
                 <%= render 'chatgpt' %>
@@ -46,7 +46,7 @@
                                 <div class="group-title">
                                     <div class="group-icon mt-2 mr-2">
                                         <% if g.cover.attached? %>
-                                            <%= image_tag g.cover.variant(resize:'300x200')  %>
+                                            <%= image_tag g.cover.variant(resize:'300x300')  %>
                                         <% else %>
                                             <img src="http://via.placeholder.com/40x40" alt="placeholder">
                                         <% end %>
