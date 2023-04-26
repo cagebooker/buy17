@@ -4,7 +4,7 @@
     <%= link_to '回到群組', group_stores_path, class:'button is-small ml-2 button-dark' %>
   </h1>
   <% if @purchases_unpaid.present? %>
-    <div class="title is-5 title-dark">尚未付款的團購</div>
+    <div class="title is-6 title-dark">尚未付款的團購</div>
     <div class="columns is-multiline">
       <% @purchases_unpaid.each do |purchase| %>
         <div class="column is-4">
