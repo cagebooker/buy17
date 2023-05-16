@@ -75,6 +75,12 @@ body.dark-mode{
     }
     
   }
+  .dropdown-content-fix-1.dark-nav-icon{
+    background-color: transparent ;
+  }
+  .dark-dropdown-content-fix-lang{
+    background-color: $black !important; 
+  }
   .group-container-dark{
     height: 280px;
     overflow: hidden;

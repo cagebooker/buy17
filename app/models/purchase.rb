@@ -44,6 +44,7 @@ class Purchase < ApplicationRecord
     scope :finished_purchase, -> { where(state:"finished")}
     scope :refunded_purchase, -> { where(state:"refunded")}
     scope :pending_purchase, -> { where("end_time > ?", Time.now)}
+    scope :paid_purchase, -> { where(state:"paid")}
     
     private
     def generate_order_num

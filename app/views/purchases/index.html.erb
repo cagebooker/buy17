@@ -1,145 +1,160 @@
 <div class="outsider">
   <h1 class="title is-4 title-dark">
-    進行中的團購
-    <%= link_to '回到群組', group_stores_path, class:'button is-small ml-2 button-dark' %>
+    <%= @group.name %>
+    <%= link_to '回去選擇餐廳', group_stores_path, class:'button is-small ml-2 button-dark' %>
   </h1>
-  <% if @purchases_unpaid.present? %>
-    <div class="title is-6 title-dark">尚未付款的團購</div>
-    <div class="columns is-multiline">
-      <% @purchases_unpaid.each do |purchase| %>
-        <div class="column is-4">
-          <div class="card card-dark">
-            <div class="card-image">
-              <figure class="image is-2by1">
-                <% if purchase.store.cover.attached? %>
-                    <%= image_tag purchase.store.cover.variant(resize:'960x960') %>
-                <% else %>
-                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                <% end %>
-              </figure>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <% if purchase.store.cover.attached? %>
-                          <%= image_tag purchase.store.cover.variant(resize:'120x120') %>
-                      <% else %>
-                          <img src="http://via.placeholder.com/48x48" alt="placeholder">
-                      <% end %>
-                    </figure>
-                  </div>
-                  
-                  <div class="media-content">
-                    <%= link_to group_purchase_path(@group.id,purchase) do %>
-                      <p class="title is-4"><%= purchase.store.name %></p>
-                    
+  <div class="columns">
+    <div class="column">
+      <% if @purchases_unpaid.present? %>
+        <div class="title is-6 title-dark">尚未付款的團購</div>
+        <div class="columns is-multiline">
+          <% @purchases_unpaid.each do |purchase| %>
+            <% if purchase.count_orders == 0 %>
+
+            <% else %>
+              <div class="column is-8">
+              <div class="card card-dark">
+                <div class="card-image">
+                  <figure class="image is-2by1">
+                    <% if purchase.store.cover.attached? %>
+                        <%= image_tag purchase.store.cover.variant(resize:'960x960') %>
+                    <% else %>
+                        <img src="http://via.placeholder.com/1600x900" alt="placeholder">
                     <% end %>
-                    
-                    <p class="subtitle is-6">@kevingu</p>
-                  </div>
-                  <div class="media-right">
-                    <%= link_to 'LINE Pay',group_purchase_line_pay_path(@group.id,purchase),method: :post, class:'linepay-btn' %>
-                  </div>
-                </div>
-                <div class="content">
-                  <%= truncate purchase.store.description, length: 30 %>
-                </div>
-                <div class="columns">
-                  <div class="column is-4">
-                    <div class="title is-6">
-                      <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small button-dark' do %>
-                        <span>團購明細</span>
-                      <% end %>
+                  </figure>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <% if purchase.store.cover.attached? %>
+                              <%= image_tag purchase.store.cover.variant(resize:'120x120') %>
+                          <% else %>
+                              <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                          <% end %>
+                        </figure>
+                      </div>
+                      
+                      <div class="media-content">
+                        <%= link_to group_purchase_path(@group.id,purchase) do %>
+                          <p class="title is-4"><%= purchase.store.name %></p>
+                        
+                        <% end %>
+                        
+                        <p class="subtitle is-6">@kevingu</p>
+                      </div>
+                      <div class="media-right">
+                        <%= link_to 'LINE Pay',group_purchase_line_pay_path(@group.id,purchase),method: :post, class:'linepay-btn' %>
+                      </div>
+                    </div>
+                    <div class="content">
+                      <%= truncate purchase.store.description, length: 30 %>
+                    </div>
+                    <div class="columns">
+                      <div class="column is-4">
+                        <div class="title is-6">
+                          <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small button-dark' do %>
+                            <span>團購明細</span>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="column is-3">
+                        <div class="title is-6">
+                        
+                          <%= purchase.count_orders %>
+                        </div>
+                        <div class="subtitle is-6">人團購</div>
+                      </div>
+                      <div class="column is-5">
+                        <div class="title is-6"><%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+                        <div class="subtitle is-6">限時截止</div>
+                      </div>
                     </div>
                   </div>
-                  <div class="column is-3">
-                    <div class="title is-6">
-                     
-                      <%= purchase.count_orders %>
+                </div>
+              </div>
+              </div>
+            <% end %>
+            
+          
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="column ">
+      <% if @purchases.present? %>
+        <div class="title is-6 title-dark">正在進行的團購</div>
+        <div class="columns is-multiline">
+          <% @purchases.each do |purchase| %>
+            <div class="column is-8">
+              <div class="card card-dark">
+                <div class="card-image">
+                  <figure class="image is-2by1">
+                    <% if purchase.store.cover.attached? %>
+                        <%= image_tag purchase.store.cover.variant(resize:'960x960') %>
+                    <% else %>
+                        <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                    <% end %>
+                  </figure>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <% if purchase.store.cover.attached? %>
+                              <%= image_tag purchase.store.cover.variant(resize:'120x120') %>
+                          <% else %>
+                              <img src="http://via.placeholder.com/48x48" alt="placeholder">
+                          <% end %>
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <%= link_to group_purchase_path(@group.id,purchase) do %>
+                          <p class="title is-4"><%= purchase.store.name %></p>
+                        
+                        <% end %>
+                        
+                        <p class="subtitle is-6">@kevingu</p>
+                      </div>
                     </div>
-                    <div class="subtitle is-6">人團購</div>
-                  </div>
-                  <div class="column is-5">
-                    <div class="title is-6"><%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
-                    <div class="subtitle is-6">限時截止</div>
+                    <div class="content">
+                      <%= truncate purchase.store.description, length: 30 %>
+                    </div>
+                    <div class="columns">
+                      <div class="column is-4">
+                        <div class="title is-6">
+                          <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small button-dark' do %>
+                            <span>團購明細</span>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="column is-3">
+                        <div class="title is-6">
+                        
+                          <%= purchase.count_orders %>
+                        </div>
+                        <div class="subtitle is-6">人團購</div>
+                      </div>
+                      <div class="column is-5">
+                        <div class="title is-6"><%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
+                        <div class="subtitle is-6">限時截止</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
+      <% else %>
+        <div class="title is-6">目前沒有進行中的團購喔...</div>
+        <%= link_to new_group_purchase_path,class:'button is-small' do  %>
+          開啟新團購
+        <% end %>
       <% end %>
     </div>
-  <% end %>
+  </div>
   
-  <% if @purchases.present? %>
-    <div class="columns is-multiline">
-      <% @purchases.each do |purchase| %>
-        <div class="column is-4">
-          <div class="card card-dark">
-            <div class="card-image">
-              <figure class="image is-2by1">
-                <% if purchase.store.cover.attached? %>
-                    <%= image_tag purchase.store.cover.variant(resize:'960x960') %>
-                <% else %>
-                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
-                <% end %>
-              </figure>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <% if purchase.store.cover.attached? %>
-                          <%= image_tag purchase.store.cover.variant(resize:'120x120') %>
-                      <% else %>
-                          <img src="http://via.placeholder.com/48x48" alt="placeholder">
-                      <% end %>
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <%= link_to group_purchase_path(@group.id,purchase) do %>
-                      <p class="title is-4"><%= purchase.store.name %></p>
-                    
-                    <% end %>
-                    
-                    <p class="subtitle is-6">@kevingu</p>
-                  </div>
-                </div>
-                <div class="content">
-                  <%= truncate purchase.store.description, length: 30 %>
-                </div>
-                <div class="columns">
-                  <div class="column is-4">
-                    <div class="title is-6">
-                      <%= link_to purchase_details_path(purchase,{group_id: @group.id}),class:'button is-small button-dark' do %>
-                        <span>團購明細</span>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="column is-3">
-                    <div class="title is-6">
-                     
-                      <%= purchase.count_orders %>
-                    </div>
-                    <div class="subtitle is-6">人團購</div>
-                  </div>
-                  <div class="column is-5">
-                    <div class="title is-6"><%= purchase.end_time.strftime('%m/%d/%H:%M') %></div>
-                    <div class="subtitle is-6">限時截止</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="title is-6">目前沒有進行中的團購喔...</div>
-    <%= link_to new_group_purchase_path,class:'button is-small' do  %>
-      開啟新團購
-    <% end %>
-  <% end %>
+  
+
   
   
 

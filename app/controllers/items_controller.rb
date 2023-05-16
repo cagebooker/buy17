@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
     before_action :set_store, only: [:create, :edit, :update, ]
     before_action :set_item, only: [:edit, :update, :destroy]
+    def index
+        @store = Store.find(params[:store_id]).include(:items)
+    end
     def create 
         if @store.items.create item_params
             redirect_to store_path(@store), notice: 'Item was successfully created.'

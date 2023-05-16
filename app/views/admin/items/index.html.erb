@@ -2,7 +2,7 @@
     <div class="columns">
       <div class="column is-6">
         <div class="title is-5">
-          目前有的菜單：
+          <%= t(:目前有的菜單) %>：
         </div>  
         <div class="columns is-multiline">
           <% @items.each do |item| %>
@@ -25,34 +25,49 @@
       <div class="column is-6 ">
         <div class="card card-dark" >
             <div class="card-content">
-            <h1 class="title is-5">新增菜單</h1>
+            <h1 class="title is-5"><%= t(:新增菜單) %></h1>
               <%= form_for Item.new, url:admin_store_items_path(@store) do |f| %>
                 <div class="field">
-                  <%= f.label :name, '名稱', class:'label title-dark' %>
+                  <%= f.label :name, class:'label title-dark' do %>
+                    <%= t(:名稱) %>
+                  <% end %>
+                   
                   <div class="control">
                     <%= f.text_field :name, class:'input is-small' %>
                   </div>
                 </div>
 
                 <div class="field">
-                  <%= f.label :price, '價格', class:'label title-dark' %>
+                  <%= f.label :price, class:'label title-dark' do %>
+                    <%= t(:價格) %>
+                  <% end %>
+                  
                   <div class="control">
                     <%= f.text_field :price, class:'input is-small' %>
                   </div>
                 </div>
 
                 <div class="field">
-                  <%= f.label :logo, '圖片', class:'label title-dark' %>
+                  <%= f.label :logo, class:'label title-dark' do %>
+                    <%= t(:圖片) %>
+                  <% end %>
+                  
                   <div class="control">
                     <%= f.file_field :logo %>
                   </div>
                 </div>
 
                 <div class="field">
-                  <%= f.submit '確定',class:'button button-dark style-3-fix is-fullwidth is-small' %>
+                  <%= f.submit class:'button button-dark  is-fullwidth is-small' do %>
+                    <%= t(:送出) %>
+                  <% end %>
+                  
                 </div>
                 <div class="field">
-                  <%= link_to "返回上一页", edit_admin_store_path(@store), class:'button button-dark is-small' %>
+                  <%= link_to edit_admin_store_path(@store), class:'button button-dark is-small' do %>
+                    <%= t(:返回上一頁) %>
+                  <% end %>
+                  
                 </div>
               <% end %>
             </div>

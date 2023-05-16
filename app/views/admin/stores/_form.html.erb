@@ -2,7 +2,10 @@
     <div class="columns">
     <div class="column is-6">
         <div class="field">
-            <%= f.label :cover,'店家圖片',class:'label title-dark' %>
+            <%= f.label :cover,class:'label title-dark' do %>
+                <%= t(:店家圖片) %>
+            <% end %>
+            
             <div class="control mb-2">
                 <%= f.file_field :cover %>
             </div>
@@ -11,7 +14,10 @@
     </div>
     <div class="column is-6">
         <div class="field">
-            <%= f.label :name,'名稱', class:'label title-dark' %>
+            <%= f.label :name, class:'label title-dark' do %>
+                <%= t(:名稱) %>
+            <% end %>
+            
             <div class="control">
                 <%= f.text_field :name, class:'input' %>
                 <% @store.errors.full_messages_for(:name).each do |msg| %>
@@ -20,7 +26,10 @@
             </div>
         </div>
         <div class="field">
-            <%= f.label :address,'地址', class:'label title-dark' %>
+            <%= f.label :address, class:'label title-dark' do %>
+                <%= t(:地址) %>
+            <% end %>
+            
             <div class="control">
                 <%= f.text_field :address, class:'input' %>
                 <% @store.errors.full_messages_for(:address).each do |msg| %>
@@ -29,7 +38,10 @@
             </div>
         </div>
         <div class="field">
-            <%= f.label :phone,'電話', class:'label title-dark' %>
+            <%= f.label :phone, class:'label title-dark' do %>
+                <%= t(:電話) %>
+            <% end %>
+            
             <div class="control">
                 <%= f.text_field :phone, class:'input' %>
                 <% @store.errors.full_messages_for(:phone).each do |msg| %>
@@ -38,7 +50,10 @@
             </div>
         </div>
         <div class="field">
-            <%= f.label :description,'簡單描述', class:'label title-dark' %>
+            <%= f.label :description, class:'label title-dark' do %>
+                <%= t(:簡單描述) %>
+            <% end %>
+            
             <div class="control">
                 <%= f.text_area :description, class:'textarea' %>
                 <% @store.errors.full_messages_for(:description).each do |msg| %>
@@ -47,12 +62,18 @@
             </div>
         </div>
         <div class="field">
-            <%= f.submit '送出', class:'button button-dark is-fullwidth is-small' %>
+            <%= f.submit class:'button button-dark is-fullwidth is-small' do %>
+                <%= t(:修改) %>
+            <% end %>
+            
             
         </div>
         <div class="field">
             
-            <%= link_to "返回上一页", :back ,class:'button is-small button-dark' %>
+            <%= link_to :back ,class:'button is-small button-dark' do %>
+                <%= t(:返回上一頁) %>
+            <% end %>
+            
                  
         </div>
     </div>

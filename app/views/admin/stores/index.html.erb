@@ -1,7 +1,7 @@
 <div class="outsider backgroun-border-white">
   <div class="columns">
     <div class="column is-6">
-      <div class="title is-5">您管理的店家：</div>
+      <div class="title is-5"><%= t(:您管理的店家) %></div>
       <% if @stores.present? %>
         <% @stores.each do |store| %>
           <div class="card columns card-dark border-white">
@@ -26,11 +26,11 @@
                     <p class="title is-5">
                       <%= store.name %> | 
                       <% if store.state == 'online' %>
-                        <span class="state-online title is-6">上線</span>
+                        <span class="state-online title is-6"><%= t(:上線) %></span>
                       <% elsif store.state == "offline" %>
-                        <span class="state-offline title is-6">關閉中</span>
+                        <span class="state-offline title is-6"><%= t(:關閉中) %></span>
                       <% else %>
-                        <span class="state-pending title is-6">準備中</span>
+                        <span class="state-pending title is-6"><%= t(:準備中) %></span>
                       <% end %>
                       
                     </p>
@@ -41,7 +41,7 @@
               </div>
 
               <div class="content">
-                建立的時間：
+                <%= t(:建立的時間) %>：
                 <time datetime="2016-1-1"><%= store.created_at.strftime("%Y/%m/%d %H:%M") %></time>
               </div>
             </div>
@@ -50,42 +50,51 @@
         <% end %>  
         
       <% else %>
-        <%= link_to '開始你的店家', new_admin_store_path, class:'button' %>
+        <%= link_to new_admin_store_path, class:'button' do %>
+          <%= t(:開始你的店家) %>
+        <% end %>
+        
       <% end %>
       
       
     </div>
     <div class="column is-6">
        <div class="title is-5 mb-2">
-        您的訂單：
+        <%= t(:您的訂單) %>：
        </div>
        <div class="box height-fix-1 background-black border-white">
-        今日(<%= Time.now.strftime("%Y/%m/%d") %>)未完成訂單： 
-        <% @purchases_pending.each do |purchase| %>
+        <%= t(:今日) %>(<%= Time.now.strftime("%Y/%m/%d") %>)<%= t(:未完成訂單) %>： 
+        <% @purchases_paid.each do |purchase| %>
           <div class="box background-light-gray">
             <%= purchase.store.name %> | 
             <% if purchase.state == 'pending' %>
-              <span class="state-p">等待中</span>
-              | 訂單送出時間：<%= purchase.end_time.strftime("%m/%d %I:%M") %>
+              <span class="state-p"><%= t(:等待中) %></span>
+              | <%= t(:訂單送出時間) %>：<%= purchase.end_time.strftime("%m/%d %I:%M") %>
             <% else %>
-              <span class="state-p">已完成</span>
+              <span class="state-p"><%= t(:已完成) %></span>
             <% end %>
             <br>
-            訂單編號：<%= purchase.id %>,   訂購人： <%= purchase.user.email %>
+            <%= t(:訂單編號) %>：<%= purchase.id %>,   <%= t(:訂購人) %>： <%= purchase.user.email %>
             <% purchase.orders.each do |order| %>
               <% order.ordered_items.each do |order_item| %>
                 <br>
-                <%= order_item.item.name %> 數量：
+                <%= order_item.item.name %> <%= t(:數量) %>：
                 <%= order_item.quantity %> 
               <% end %>  
             <% end %>
             <br>
             <div class="columns mt-2">
               <div class="column is-9">
-                <%= link_to '完成訂單',purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
+                <%= link_to purchase_finished_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' do %>
+                  <%= t(:完成訂單) %>
+                <% end %>
+                
               </div>
               <div class="column is-3">
-                <%= link_to '空單取消',purchase_refunded_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' %>
+                <%= link_to purchase_refunded_path(purchase.group,purchase,{'purchase_id':purchase.id}),method: :post,class:'button is-small is-fullwidth' do %>
+                  <%= t(:空單取消) %>    
+                <% end %>
+            
               </div>
             </div>
              
@@ -97,14 +106,14 @@
         
       </div>
       <div class="title is-5 title-dark">
-        已完成訂單：
+        <%= t(:已完成訂單) %>：
       </div>
       <div class="box background-black border-white height-fix-2">
         <% @purchases_done.each do |purchase| %>
           <div class="box background-light-gray">
-            <span class="state-f">已完成</span>
-            <span>訂單編號： <%= purchase.id %></span>
-            <span>總金額： <%= purchase.total_income %></span>
+            <span class="state-f"><%= t(:已完成) %></span>
+            <span><%= t(:訂單編號) %>： <%= purchase.id %></span>
+            <span><%= t(:總金額) %>： <%= purchase.total_income %></span>
           </div>
         <% end %>
       </div>

@@ -13,8 +13,9 @@ class Admin::StoresController < ApplicationController
     end
     # render json: {'123':store_id_set}
     # 感覺這種寫法效能很差...
-    @purchases_pending = Purchase.where("end_time < ?",Time.now).where(state: 'pending', store_id: store_id_set)
+    # @purchases_pending = Purchase.where("end_time < ?",Time.now).where(state: 'pending', store_id: store_id_set)
     @purchases_done = Purchase.where(state: 'finished', store_id: store_id_set)
+    @purchases_paid = Purchase.where("end_time < ?",Time.now).where(state: 'paid', store_id: store_id_set)
 
   end
   def new

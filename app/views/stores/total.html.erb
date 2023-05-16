@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column is-9">
       <% @allStores.each do |store| %>
-        <div class="card store-section stay-centered zindex-l box-mb">
+        <div class="card store-section stay-centered zindex-l box-mb card-dark ">
             <div class="">
                 <div class="store-info ">
                   <div class="card-content  has-border-right">
@@ -75,9 +75,9 @@
                   </div>
                 </div>
                 <div class="store-menu">
-                    <div class="dropdown is-up is-hoverable has-text-centered titlebar dp-btn style-1 is-fullwidth ">
+                    <div class="dropdown is-up is-hoverable has-text-centered titlebar border-menu dp-btn is-fullwidth ">
                         <div class="dropdown-trigger">
-                            <div class="titlebar style-1 flex" aria-haspopup="true" aria-controls="dropdown-menu4">
+                            <div class="titlebar flex" aria-haspopup="true" aria-controls="dropdown-menu4">
                       
                                 菜單
                                 <span class="icon is-small">
@@ -87,10 +87,10 @@
                             </div>
                         </div>
                         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                            <div class="dropdown-content dropdown-fix">
-                                <span class=" dropdown-item" style="font-weight:bold">菜單：</span>
+                            <div class="dropdown-content dropdown-fix background-black">
+                                <span class=" dropdown-item background-black" style="font-weight:bold">菜單：</span>
                                 <% store.items.each do |item| %>
-                                    <div class=" dropdown-item">
+                                    <div class=" dropdown-item background-black">
                                         <div><%= item.name %> $<%= item.price %></div>
                                     </div>
                                 <% end %>

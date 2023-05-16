@@ -1,6 +1,6 @@
 
 <div class="outsider">
-  <div class="title is-4">店家訂單總覽：</div>
+  <div class="title is-4"><%= t(:店家訂單總覽) %>：</div>
   <% @stores.each do |store| %>
     <div class="divider"></div>
     <p class="title is-5 title-dark">
@@ -13,11 +13,11 @@
               
             <% elsif purchase.state === 'finished' %>
               <div class="box background-light-gray">
-                <%= purchase.store.name %> | <span class="state-f">已完成</span>
+                <%= purchase.store.name %> | <span class="state-f"><%= t(:已完成) %></span>
                 
                 <br>
-                訂單編號：<%= purchase.id %>,   訂購人： <%= purchase.user.email %>
-                <%= purchase.state %>
+                <%= t(:訂單編號) %>：<%= purchase.id %>,   <%= t(:訂購人) %>： <%= purchase.user.email %>
+                
                 <br>
                 <div class="level">
                   <div class="level-left">
@@ -36,7 +36,7 @@
                   </div>
                   <div class="level-right">
                     <span class="title is-6 title-dark">
-                      收入：  <%= purchase.total_income %>
+                      <%= t(:收入) %>：  <%= purchase.total_income %>
                     </span> 
                   </div>
                 </div>
@@ -48,9 +48,9 @@
         </div>
         <div class="column is-3">
           <div class="box background-light-gray border-white">
-            <p>本月訂單量： <%= store.purchases.finished_purchase.count %></p>
-            <p>本月收益： <%= store.total_income %></p>
-            <p>退回訂單： <%= store.purchases.refunded.count %></p>
+            <p><%= t(:本月訂單量) %>： <%= store.purchases.finished_purchase.count %></p>
+            <p><%= t(:本月收益) %>： <%= store.total_income %></p>
+            <p><%= t(:退回訂單) %>： <%= store.purchases.refunded.count %></p>
           </div>
         </div>
       

@@ -26,8 +26,8 @@
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-          <div class="dropdown-content dropdown-content-fix-2">
-            <div class="icon-hover ">
+          <div class="dropdown-content dropdown-content-fix-lang">
+            <div class="icon-hover">
               <%= link_to "English", url_for(locale: :en) %> 
               <div class="divider"></div>
               <%= link_to "中文", url_for(locale: :'zh-TW') %>
@@ -46,8 +46,8 @@
           </button>
         </div>
         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-          <div class="dropdown-content dropdown-content-fix-1">
-            <div class="icon-hover"><%= t(:切換模式) %></div>
+          <div class="dropdown-content dropdown-content-fix-mode ">
+            <div class="icon-hover" style="display: inline-block"><%= t(:切換模式) %></div>
             <div class="dropdown-item ">
               
             </div>
@@ -94,7 +94,7 @@
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
                 <button class="button button-fix" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span><%= current_user.email %></span>
+                  <span><%= current_user.name %></span>
                   <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
