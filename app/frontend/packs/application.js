@@ -53,6 +53,9 @@ document.addEventListener("turbolinks:load", function(event){
           orderCancel(){
             this.orderItem = false;
           },
+          closeBoard(){
+            // console.log("success!")
+          },
           changeMode(evt){
             evt.preventDefault();  
             // console.log("dark mode on") success

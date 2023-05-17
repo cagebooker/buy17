@@ -115,5 +115,13 @@ body.dark-mode{
     background-color: $black;
     color: $white;
   }
+  .dark-comment-button{
+    &:hover{
+      color: $black !important;
+    }
+  }
+  .dark-comment-area{
+    color: $black !important;
+  }
 }
 

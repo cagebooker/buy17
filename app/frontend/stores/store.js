@@ -26,10 +26,11 @@ const store = new Vuex.Store({
     LOAD_COMMENTS(state, comments){
       // console.log(comments.data)
       state.comments = comments.data;
+      state.comments.reverse();
     },
     CREATE_COMMENT(state, comment){
       // console.log(comment.data)
-      state.comments.push(comment.data);
+      state.comments.unshift(comment.data);
     }
   },
   actions: {

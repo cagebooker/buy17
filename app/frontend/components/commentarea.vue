@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="comment-button" @click="load">留言板</div>
-    <div class="comment-area" v-if="editing">
+    <div class="comment-button dark-comment-button" @click="load">留言板</div>
+    <div class="comment-area dark-comment-area" v-if="editing">
       <div class="content-area">
         <div class="iconarea" >
           評價：
@@ -62,6 +62,7 @@ export default{
         
       },
       load(){
+        this.$emit('close-board');
         this.editing = !this.editing;
         this.$store.dispatch("loadComments",this.url); 
       }
@@ -130,5 +131,14 @@ export default{
   &:hover{
     border: 1px solid rgb(45, 45, 45);
   }
+}
+.background{
+  border: 1px solid gray;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  position:fixed;
+  top: 0px;
+  left: 0px;
 }
 </style>
