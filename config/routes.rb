@@ -48,6 +48,9 @@ Rails.application.routes.draw do
   resources :groups do 
     resources :stores do
       # resources :items
+      resources :comments, only: [:index, :create]
+      # get :comments
+      # post :comments
     end
     resources :purchases, only: [:new,:create,:index,:show,:destroy] do 
       post 'line_pay', as:'line_pay'

@@ -20,7 +20,7 @@ import "cocoon-js-vanilla";
 import Vue from 'vue/dist/vue.esm';
 import store from '../stores/store.js';
 import orderitem from 'components/orderItem.vue';
-
+import Commentarea from '../components/commentarea.vue'
 import axios from 'axios';
 
 
@@ -39,7 +39,10 @@ document.addEventListener("turbolinks:load", function(event){
           problem: '',
           ans: '123',
           chatstate: false,
+          list_id: '',
+          group_id: '',
         },
+        components:{Commentarea: Commentarea},
         computed:{
           answers(){
             
@@ -96,7 +99,6 @@ document.addEventListener("turbolinks:load", function(event){
             this.chatgpt != this.chatgpt
           }
         },
-        components:{orderitem},
 
         mounted(){
           /*** 

@@ -2,6 +2,7 @@ class StoresController < ApplicationController
     before_action :set_store, only: [:show, :edit, :destroy ,:update]
     before_action :set_group, only: [:index, :show, :edit, :destroy ,:update, :set]
     before_action :set_store_by_id, only: [:set]
+    skip_before_action :verify_authenticity_token, only: [:comments]
     def total
         @allStores = Store.where.not(state: 'offline').includes(:items)
     end
@@ -37,6 +38,7 @@ class StoresController < ApplicationController
         @store.destroy
         redirect_to stores_path, :notice => 'Store was successfully destroyed.'
     end
+    
     private
     def set_group 
         @group = Group.find(params[:group_id])

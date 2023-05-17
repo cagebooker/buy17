@@ -7,7 +7,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     // 設定狀態值
-    answers: []
+    answers: [],
+    comments: []
   },
   mutations: {
     // 設定修改狀態值的方法
@@ -21,6 +22,14 @@ const store = new Vuex.Store({
     CHAT_GPT_QUESTION(state,res){
       // console.log(res);
       // state.answers.unshift(res);
+    },
+    LOAD_COMMENTS(state, comments){
+      // console.log(comments.data)
+      state.comments = comments.data;
+    },
+    CREATE_COMMENT(state, comment){
+      // console.log(comment.data)
+      state.comments.push(comment.data);
     }
   },
   actions: {
@@ -46,6 +55,23 @@ const store = new Vuex.Store({
         .catch(function (error) {
           console.log(error);
         });
+    },
+    loadComments({commit},url){
+      // console.log(url);
+      axios.get(url).then((res)=>{
+        // console.log(res);
+        commit('LOAD_COMMENTS',res)
+      }) .catch((err)=>{
+        console.log(err);
+      })
+    },
+    createComment({commit},data){
+      // console.log(data);
+      axios.post(data.url,data)
+      .then((res)=>{
+        // console.log(res);
+        commit("CREATE_COMMENT",res)
+      }).catch((err)=>{console.log(err)})
     }
   },
   getters: {

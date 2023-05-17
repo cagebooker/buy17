@@ -40,16 +40,23 @@
                                         <div class="">
                                         <span class="title is-6"><%= store.items.count %></span>
                                         <span class="subtitle is-6"> <%= t(:項商品) %></span>
-                                        </div>
-                                        <div class="">
                                         <span class="subtitle is-6"> <%= t(:聯絡電話) %>：</span>
                                         <span class="title is-6"><%= store.phone %></span>
+                                        </div>
+                                        <div class="">
+                                        
                                         </div>
                                         <div class="">
                                         <span class="subtitle is-6"><%= t(:地址)%>：</span>
                                         <span class="title is-6"><%= store.address %></span>
                                         </div>
+                                        
                                     </div>
+                                    
+                                    <Commentarea :store-id="<%= store.id %>" :group-id="<%= @group.id %>" 
+                                                :user-id="<%= current_user.id %>" user-name="<%= current_user.name %>"></Commentarea>
+                                    
+                                    
                                 </div>
                             </div>
                             <div class="column is-7 padding-none">
