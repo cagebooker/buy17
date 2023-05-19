@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do 
+    resource :label, only: [:show, :create]
     resources :stores do
       # resources :items
       resources :comments, only: [:index, :create]

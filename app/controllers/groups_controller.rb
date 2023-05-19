@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     end
     def update
         @group.update group_params
-        redirect_to group_stores_path(@group)
+        redirect_to groups_path
     end
     def destroy
         # @group.stores.destroy(@group)

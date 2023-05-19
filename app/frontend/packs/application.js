@@ -21,6 +21,8 @@ import Vue from 'vue/dist/vue.esm';
 import store from '../stores/store.js';
 import orderitem from 'components/orderItem.vue';
 import Commentarea from '../components/commentarea.vue'
+import Setgroup from '../components/setgroup.vue'
+import Grouplabel from '../components/grouplabel.vue'
 import axios from 'axios';
 
 
@@ -42,7 +44,7 @@ document.addEventListener("turbolinks:load", function(event){
           list_id: '',
           group_id: '',
         },
-        components:{Commentarea: Commentarea},
+        components:{Commentarea: Commentarea,Setgroup: Setgroup, Grouplabel: Grouplabel}, 
         computed:{
           answers(){
             
@@ -100,6 +102,10 @@ document.addEventListener("turbolinks:load", function(event){
           startChatGpt(evt){
             evt.preventDefault();
             this.chatgpt != this.chatgpt
+          },
+          setgroup(evt){
+            evt.preventDefault();
+            console.log("set group info");
           }
         },
 

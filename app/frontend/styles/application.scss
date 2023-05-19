@@ -204,8 +204,14 @@ body{
     background-color: #e6e6e6 !important;
     color: #656464 !important;
 }
+.up-2{
+    transform: translateY(-5px);
+}
 .mt-2{
     margin-top: 3rem;
+}
+.mt-4{
+    margin-top: 6rem;
 }
 .mr-2{
     margin-right: 3rem;
@@ -729,4 +735,84 @@ body{
     transition: 0.3s;
     background-color: rgb(244, 244, 244);
     
+}
+.alerm-icon{
+    position: relative;
+    top: -10px;
+    animation: shakebell 1.4s infinite;
+    cursor: pointer;
+    transition: 0.3s;
+    color: $black;
+    margin-left: 10px;
+    // border: 1px solid black;
+    &:hover{
+        color: #aaa;
+        transform: scale(1.2);
+    }
+}
+@keyframes shakebell {
+    0%{
+        transform: rotate(0deg);
+    }
+    30%{
+        transform: rotate(0deg);
+    }
+    40%{
+        // color: #06C34D;
+        transform: rotate(-6deg);
+        transform-origin: (0,0);
+    }
+    50%{
+        // color: red;
+        transform: rotate(6deg);
+        transform-origin: (0,0);
+        
+    }
+    60%{
+        // color:#06C34D;
+        transform: rotate(-6deg);
+        transform-origin: (0,0);
+    }
+    100%{
+        transform: rotate(0deg);
+        
+    }
+}
+.set-icon{
+    position: relative;
+    top: -10px;
+    cursor: pointer;
+    color: $black;
+    // margin-left: 20px;
+    transform: translate(6px, 0px);
+    .down-1{
+        // transform: translate(0px, 2px);
+        // transform: translateY(2px);
+    }
+    .icon-1{
+        color: $black;
+    }
+}
+.down-2{
+    transform: translate(6px, 4px);
+}
+.setting-icon{
+    border: 2px solid transparent;
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    transition: 0.3s;
+    // transform: translate(4px, 2px);   
+    &:hover{
+        // border: 2px solid $black;
+        // transform: scale(1.1);
+        background-color: $white;
+    }
+}
+.group-mark{
+    border: 2px solid $gray;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
 }

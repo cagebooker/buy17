@@ -3,6 +3,7 @@ $gray: #303030;
 $light_gray: #282828;
 $white: #F1F1F1;
 $border_white: #8f8f8f;
+$yellow: #fdcb6e;
 
 .height-center{
   position: relative;
@@ -122,6 +123,12 @@ body.dark-mode{
   }
   .dark-comment-area{
     color: $black !important;
+  }
+  .dark-alerm-icon{
+    color: $white !important;
+    &:hover{
+      color: $yellow !important;
+    }
   }
 }
 

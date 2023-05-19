@@ -102,6 +102,10 @@
                 <%= t(:正在進行的團購！) %>
                 
             <% end %>
+            <%= link_to '/stores',class:'btn' do %>
+                <%= t(:找尋店家) %>
+            <% end %>
+            
             <%= link_to purchases_done_path(@group),class:'btn' do  %>
                 <%= t(:歷史訂單) %>
                 

@@ -44,18 +44,38 @@
                                     <% end %> 
                                 </div>
                                 <div class="group-title">
-                                    <div class="group-icon mt-2 mr-2">
-                                        <% if g.cover.attached? %>
-                                            <%= image_tag g.cover.variant(resize:'300x300')  %>
-                                        <% else %>
-                                            <img src="http://via.placeholder.com/40x40" alt="placeholder">
-                                        <% end %>
-                                        
+                                    <div class="level">
+                                        <div class="level-left">
+                                           <div class="group-icon mr-2 up-2">
+                                                <% if g.cover.attached? %>
+                                                    <%= image_tag g.cover.variant(resize:'300x300')  %>
+                                                <% else %>
+                                                    <img src="http://via.placeholder.com/40x40" alt="placeholder">
+                                                <% end %>
+                                                
+                                            </div>
+                                            <div class="title is-5 title-dark  group-name mt-4"><%= g.name %></div>
+                                        </div>
+                                        <div class="level-right">
+                        
+                                            <Grouplabel :group-id="<%= g.id %>" :user-id="<%= current_user.id %>"></Grouplabel>
+                                            
+                                            <% if g.purchases.pending_purchase.present? %>
+                                                <%= link_to group_purchases_path(g),class:'mt-2' do  %>
+                                                    <i class="fa-regular fa-bell fa-xl alerm-icon dark-alerm-icon"></i>
+                                                <% end %>
+                                            <% end %>
+                                
+                                            <Setgroup group-name="<%= g.name%>" :group-id="<%= g.id %>" :user-id="<%= current_user.id %>"></Setgroup>
+                                            
+                                            
+                                        </div>
                                     </div>
-                                    <div class="title is-5 title-dark  group-name"><%= g.name %></div>
+                                   
                                     
                                     
-                
+                                    
+
                                 </div>
                                 
                             </div>  
