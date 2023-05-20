@@ -779,10 +779,13 @@ body{
     }
 }
 .set-icon{
-    position: relative;
-    top: -10px;
+    position: absolute !important;
+    // right: 0px;
     cursor: pointer;
     color: $black;
+    width:30px;
+    height: 30px;
+    display: inline-block;
     // margin-left: 20px;
     transform: translate(6px, 0px);
     .down-1{

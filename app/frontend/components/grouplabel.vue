@@ -2,6 +2,8 @@
   <div class="group-mark up-2" v-if="show">
     {{ content }}
   </div>
+
+  
 </template>
 
 <script>
@@ -29,11 +31,10 @@ export default{
           }else{
             this.show = true
           }
-          
+          var ele = document.getElementsByClassName('group-mark')
           switch(res.name){
             case "請客":
-              let el = document.getElementsByClassName('group-mark')
-              el.classList.add("m1");
+              ele.classList.add("m1");
               break;
             case '溫暖':
               break;

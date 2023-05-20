@@ -14,17 +14,17 @@ class LabelsController < ApplicationController
     # render json: label_params 
     if @label = Grouplabel.find_by(groups_id: params[:group_id], users_id: params[:user_id]) 
       @label.update label_params
-      redirect_to root_path
+      # redirect_to root_path
       # 能不要用 redirect_to 嗎？
-      # render json: @label
+      render json: @label
     else
       @label = Grouplabel.new
       @label.users_id = params[:user_id]
       @label.groups_id = params[:group_id]
       @label.name = label_params[:name]
       @label.save
-      redirect_to root_path
-      # render json: @label
+      # redirect_to root_path
+      render json: @label
     end
   end
   private
