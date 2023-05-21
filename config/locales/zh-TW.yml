@@ -1,7 +1,7 @@
 zh-TW:
   hello_world: "哈囉"
   hello: "哈囉"
-  
+  Cash: "請客"
   activerecord:
     errors:
       messages:

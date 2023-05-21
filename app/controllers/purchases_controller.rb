@@ -17,12 +17,14 @@ class PurchasesController < ApplicationController
     end
     def create
         # render json: {'kevin':'in create method'}
+        # render json: params
         @purchase = current_user.purchases.build purchase_params
         @purchase.group_id = params[:group_id]
+        @group = Group.find(params[:group_id])
         if @purchase.save
-            redirect_to group_purchases_path
+            redirect_to group_purchases_path(@group)
         else
-            render json: {'123':@purchase.errors.full_messages}
+            # render json: {'error':@purchase.errors.full_messages}
         end
     end
     def destroy

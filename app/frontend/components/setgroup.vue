@@ -1,7 +1,7 @@
 <template>
   <div class=" out-div">
     <div class="group-mark m1" id="mark" v-if="show1">
-      請客
+      {{ content }}
     </div>
     <div class="group-mark m2" v-if="show2">
       {{ content }}
@@ -16,8 +16,8 @@
       {{ content }}
     </div> 
     <span class="set-icon setting-icon" >
-      <span class="size" @click="editing = !editing">
-        <i class="fa-solid fa-ellipsis-vertical fa-lg  down-1" ></i>
+      <span class="size dark-dot" @click="editing = !editing">
+        <i class="fa-solid fa-ellipsis-vertical fa-lg  down-1 dark-fa-ellipsis" ></i>
       </span>
       <div class="set-area" v-if="editing" @keyup.enter="hello">
         <input v-model="gName" class="mb-2">
@@ -55,7 +55,8 @@
 import Rails from '@rails/ujs'
 export default{
     name: 'setgroup',
-    props: ["groupName","groupId","userId", ],
+    props: ["groupName","groupId","userId", "contentOne","contentTwo",
+            "contentThree","contentFour", "contentFive"],
     data: function(){
         return{
           editing: false,
@@ -407,7 +408,8 @@ export default{
 }
 @keyframes shake {
   0%{
-    transform: rotate(0deg);
+    
+    transform: rotate(0deg) translate(0px, -6px);
   }
   30%{
     transform: rotate(-6deg);
@@ -438,5 +440,6 @@ export default{
   height:36px;
   padding-right: 36px;
   transform: translate(0px, -2px);
+  margin-left: 15px;
 }
 </style>

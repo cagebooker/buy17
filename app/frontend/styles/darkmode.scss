@@ -130,5 +130,16 @@ body.dark-mode{
       color: $yellow !important;
     }
   }
+  .dark-dot{
+    &:hover .dark-fa-ellipsis{
+      color: #1F2124 !important;
+    }
+    .dark-fa-ellipsis{
+      color: $white !important;
+    }  
+  }
+  .dark-nav-icon{
+    color: #1F2124 !important;
+  }
 }
 
