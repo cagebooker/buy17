@@ -141,5 +141,23 @@ body.dark-mode{
   .dark-nav-icon{
     color: #1F2124 !important;
   }
+  .dark-table{
+    background-color: #1F2124;
+    color: $white;
+    th{
+      color: $white;
+    }
+    .thead{
+      background-color: #303030 !important;
+    }
+    tr{
+      &:hover{
+        background-color: #303030 !important;
+      }
+    }
+  }
+  .dark-content{
+    color: $white !important;
+  }
 }
 

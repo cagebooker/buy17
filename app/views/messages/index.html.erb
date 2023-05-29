@@ -3,28 +3,52 @@
     訊息
   </div>
   <div class="columns">
-    <div class="column is-6">
+    <div class="column is-9">
       <% current_user.messages.unread_messages.each do |msg| %>
-        <%= link_to message_read_message_path(msg),method: :post,class:'' do %>
-          <div class="box hover-effect mb-2">
+        <%= link_to root_path,class:'' do %>
+          <div class="box  mb-2">
             <%= msg.content %> | 
             <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
           </div>
         <% end %>
       <% end %>
-      <% current_user.messages.read_messages.each do |msg| %>
-        <%= link_to '#',method: :post,class:'' do %>
-          <div class="box hover-effect-2 mb-2 read-msg">
-              <%= msg.content %> | 
-              <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
-          </div>
-        <% end %>
-      <% end %>
-      
-      
+      <table class="table is-fullwidth is-hoverable dark-table">
+        <thead>
+          <tr>
+            <th>您收到的訊息</th>
+            <th>時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.messages.read_messages.each do |msg| %>
+            <tr>
+              <td>
+                <%= link_to root_path,class:'' do %>
+                  <%= msg.content %> 
+                <% end %>
+              </td>
+              <td>
+                <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-    <div class="column is-6">
-    
+    <div class="column is-2 is-offset-1">
+      <div class="infoside">
+        <div class="group-title">您有的群組</div>
+        
+        <% current_user.groups.each do |group| %>
+          <div class="group-name">
+            <%= link_to group_stores_path(group),class:'link dark-content' do %>
+              <%= group.name %>    
+            <% end %>
+            
+          </div>    
+        <% end %>
+        
+      </div>
     </div>
   </div>
 

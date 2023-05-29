@@ -38,7 +38,7 @@ body{
 }
 .state-paid{
     color: white;
-    background-color: rgb(194, 169, 10);
+    background-color: #EECC8D;
     border-radius: 3px;
     padding: 2px 4px;
 }
@@ -818,4 +818,100 @@ body{
     padding: 2px 8px;
     border-radius: 3px;
     display: inline-block;
+}
+.login-page{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    
+}
+.login-button{
+    background-color: white;
+    border: 1px solid #EECC8D;
+    width: 100%;
+    padding: 6px 0px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #EECC8D;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+        color: white;
+        background-color: #EECC8D;
+        border: 1px solid #EECC8D;
+    }
+}
+.login-hint{
+    margin-top:4px;
+    text-align: right;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover{
+        font-weight: bold;
+    }
+}
+.google-btn{
+    background-color: white;
+    border: 1px solid #DE4033;
+    color:#DE4033;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    padding: 4px 0px;
+    transition:0.2s;
+    margin-top: 10px;
+    &:hover{
+        background-color: #DE4033;
+        color:white;
+        border: 1px solid #DE4033;
+    }
+}
+.input{
+    outline:none;
+    &:focus{
+        outline:none;
+        box-shadow: none;
+    }
+}
+.box-fix{
+    border: 1px solid #b4b4b4;
+    box-shadow: none;
+}
+.thead{
+    background-color: #EECC8D !important;
+    border-radius: 5px !important;
+}
+.infoside{
+    border: 1px solid #EECC8D;
+    
+    border-radius: 8px 8px 0px 0px;
+    .group-title{
+        background-color: #EECC8D;
+        display: block;
+        text-align: center;
+        padding: 4px 0px;
+        margin-bottom: 8px;
+        border-radius: 5px 5px 0px 0px;
+        font-weight: bold;
+    
+    }
+    .group-name{
+        box-sizing: border-box;
+        display: block;
+        cursor: pointer;
+        border: 1px solid transparent;
+        text-align: center;
+        padding:8px 4px 0px 4px;
+        transition: 0.2s;
+        &:hover{
+            border: 1px solid gray;
+        }
+        .link{
+            color:rgb(41, 43, 42);
+        }
+    }
+}
+.pform{
+    transition: 0.3s;
 }

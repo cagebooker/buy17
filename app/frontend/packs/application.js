@@ -43,6 +43,7 @@ document.addEventListener("turbolinks:load", function(event){
           chatstate: false,
           list_id: '',
           group_id: '',
+          purchaseform: false
         },
         components:{Commentarea: Commentarea,Setgroup: Setgroup, Grouplabel: Grouplabel}, 
         computed:{
@@ -52,6 +53,11 @@ document.addEventListener("turbolinks:load", function(event){
           }
         },
         methods:{
+          newpurchase(evt){
+            evt.preventDefault();
+            this.purchaseform = !this.purchaseform
+          
+          },
           orderCancel(){
             this.orderItem = false;
           },

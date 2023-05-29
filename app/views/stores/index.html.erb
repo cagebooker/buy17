@@ -12,6 +12,7 @@
                                         <div class="media-left">
                                         <figure class="image is-48x48">
                                             <% if store.cover.attached? %>
+
                                                 <%= image_tag store.cover.variant(resize:'120x120') %>
                                             <% else %>
                                                 <img src="http://via.placeholder.com/48x48" alt="placeholder">
@@ -71,7 +72,8 @@
                                                     <div class="card">
                                                         <div class="card-image">
                                                         <figure class="image is-4by3">
-                                                            <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                                                            <%= image_tag item.logo.variant(resize:'103x77') if item.logo.attached? %>
+                                                            
                                                         </figure>
                                                         </div>
                                                         <div class="padding-fix item-content-dark">
@@ -113,14 +115,44 @@
             <%= link_to group_member_path(@group),class:'btn' do  %>
                 <%= t(:成員) %>(<%= @group.users.count %>)
             <% end %>
-            <%= link_to new_group_purchase_path,class:'btn' do  %>
-                <%= t(:開啟新團購) %>
-                
-            <% end %>
             <%= link_to edit_group_path(@group),class:'btn' do  %>
                 <%= t(:設定群組) %>
                 
             <% end %>
+            <a href="#" class="btn" @click="newpurchase">
+                <%= t(:開啟新團購) %>
+            </a>
+            <div class="box background-light-gray border-white pform" v-if="purchaseform">
+                <%= form_for [@group,@purchase] do |f| %>
+                    <div class="field">
+                        <%= f.label :time_perid,'時段', class:'label title-dark' %>
+                        <div class="control">
+                            <span class="select is-small">
+                               <%= f.select :time_period, ['早餐','午餐','晚餐','下午茶','水果','飲料'],class:'is-small' %> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <%= f.label :store_id,'店家', class:'label title-dark' %>
+                        <div class="control">
+                            <span class="select is-small">
+                               <%= f.collection_select :store_id, @group.stores.online_store, :id, :name %> 
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <%= f.label :end_time,'截止日期', class:'label title-dark' %>
+                        <div class="control">
+                            <%= f.datetime_select :end_time %>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <%= f.submit '確定', class:'button button-dark is-small' %>
+                    </div>
+                <% end %>
+            </div>
+            
             
             
         </div>

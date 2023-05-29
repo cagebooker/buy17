@@ -1,31 +1,36 @@
 
 <section class="section">
   <div class="columns">
-    <div class="column is-4 is-offset-4 box">
-      <h2>登入</h2>
+    <div class="column is-4 is-offset-4 box box-fix">
+      <h2 class="text-center title is-4">登入</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email,'信箱', class:'label' %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'input' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'input is-small' %>
         </div>
 
         <div class="field">
           <%= f.label :password,'密碼', class:'label' %>
-          <%= f.password_field :password, autocomplete: "current-password", class:'input' %>
+          <%= f.password_field :password, autocomplete: "current-password", class:'input is-small' %>
         </div>
 
         <% if devise_mapping.rememberable? %>
           <div class="field">
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :記住我 %>
           </div>
         <% end %>
 
         <div class="actions">
-          <%= f.submit "登入" ,class: 'button'%>
+          <%= f.submit "登入" ,class: 'login-button '%>
         </div>
       <% end %>
+      <div class="login-hint">
+        忘記密碼？
+      </div>
+      
+      <div class="divider"></div>
       <%= render "devise/shared/links" %>
     </div>
   </div>

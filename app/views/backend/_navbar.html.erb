@@ -1,7 +1,7 @@
 <nav class="navbar style-3-fix" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item style-3-fix" href="/admin/stores">
-      <span class="logo-title " style="margin-right:6px;">17團購</span>
+      <span class="logo-title " style="margin-right:6px;">17<%= t(:購) %></span>
       <i class="fa-solid fa-cart-shopping fa-xl"></i>
     </a>
 
@@ -63,7 +63,7 @@
             <div class="dropdown is-hoverable">
               <div class="dropdown-trigger">
                 <button class="button button-fix style-3-fix" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span><%= current_user.email %></span>
+                  <span><%= current_user.name %></span>
                   <span class="icon is-small">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                   </span>

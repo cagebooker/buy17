@@ -4,22 +4,30 @@
         <div class="title is-5">
           <%= t(:目前有的菜單) %>：
         </div>  
-        <div class="columns is-multiline">
-          <% @items.each do |item| %>
-            <div class="column is-6">
-              <div class="box background-light-gray">
-                <span class="title is-6 title-dark"><%= item.name %></span>
-                <span class="title is-6 title-dark">$ <%= item.price %></span>
-                
-                <%= link_to admin_store_item_path(@store,item),method: :delete,data:{confirm:'確定要刪除這個菜單嗎？'} do  %>
-                  <i class="fa-solid fa-xmark"></i>
-                
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-          
-        </div>
+        <table class="table is-fullwidth is-hoverable dark-table">
+          <thead>
+            <tr>
+              <th class="th">圖片</th>
+              <th class="th">名稱</th>
+              <th class="th">價格</th>
+              <th class="th">移除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <td><%= image_tag item.logo.variant(resize:'50x50') if item.logo.attached? %></td>
+                <td><%= item.name %></td>
+                <td>$ <%= item.price %></td>
+                <td> <%= link_to admin_store_item_path(@store,item),method: :delete,data:{confirm:'確定要刪除這個菜單嗎？'} do  %>
+                    <i class="fa-solid fa-xmark"></i>
+                  
+                  <% end %></td>
+              </tr>
+            
+            <% end %>
+          </tbody>
+        </table>
         
       </div>
       <div class="column is-6 ">
@@ -58,8 +66,7 @@
                 </div>
 
                 <div class="field">
-                  <%= f.submit class:'button button-dark  is-fullwidth is-small' do %>
-                    <%= t(:送出) %>
+                  <%= f.submit '確定', class:'button button-dark  is-fullwidth is-small' do %>
                   <% end %>
                   
                 </div>

@@ -10,12 +10,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="dark-mode" id="body">
+  <body class="" id="body">
     <div id="board">
-      <%= render 'shared/navbar' %>
-      <%= yield %>
+      <div class="login-page">
+        <%= render 'shared/navbar' %>
+        <%= yield %>  
+      </div>
+      
     </div>
-    <%= render 'shared/flash' if notice %>
-    <%= render 'shared/footer' %>
   </body>
 </html>

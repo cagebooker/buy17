@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable, 
+          :omniauthable, omniauth_providers: [:google_oauth2]
 
   # relationship
   has_many :purchases
@@ -29,5 +32,18 @@ class User < ApplicationRecord
 
   def name
     email.split('@')[0]
+  end
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+    # 下面處理是當資料庫內部沒有對應的帳號密碼時，建立給我們專案資料庫去對應每次授權的 token。
+    unless user
+      user = User.create(name: data['name'],
+         email: data['email'],
+         password: Devise.friendly_token[0,20]
+      )
+    end
+    user
   end
 end

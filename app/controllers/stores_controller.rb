@@ -8,6 +8,8 @@ class StoresController < ApplicationController
     end
     def index 
         @stores = @group.stores.where.not(state: 'offline').includes(:items).with_attached_cover
+        @group = Group.find params[:group_id]
+        @purchase = Purchase.new
     end
     def set
         # 建立 group store的關聯

@@ -4,15 +4,27 @@
       <h1 class="title is-4 title-dark">菜單</h1>
       <div class="columns">
         
-        <div class="column is-4">
+        <div class="column is-6">
+          <table class="table is-fullwidth is-hoverable dark-table">
+            <thead>
+              <tr>
+                <th class="th">圖片</th>
+                <th class="th">名稱</th>
+                <th class="th">價格</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @purchase.store.items.each do |item| %>
+                <tr>
+                  <td><%= image_tag item.logo.variant(resize:'50x50') if item.logo.attached? %></td>
+                  <td><%= item.name %></td>
+                  <td>$ <%= item.price %></td>
+                </tr>
+              
+              <% end %>
+            </tbody>
+          </table>
           
-          <% @purchase.store.items.each do|item| %>
-            
-            <div class="box is-fullwidth background-light-gray">
-              <%= item.name %> $<%= item.price %>
-
-            </div>
-          <% end %>
         </div>
 
         <div class="column is-4">
@@ -58,7 +70,7 @@
             </div>
           </div>
         </div>
-        <div class="column is-2 is-offset-1">
+        <div class="column is-2 ">
           <%= link_to group_stores_path(@group), class:'btn-2 color-white' do %>
             <p>回到群組</p>
           <% end %>

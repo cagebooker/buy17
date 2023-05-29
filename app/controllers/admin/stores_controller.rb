@@ -34,8 +34,8 @@ class Admin::StoresController < ApplicationController
   end
   def update
     @store.update store_params
-    render 'edit', :notice => '商店資訊已經更新！'
-    # redirect_to admin_stores_path, :notice => 'Store was successfully updated.'
+    # render 'edit', :notice => '商店資訊已經更新！'
+    redirect_to admin_stores_path, :notice => '店家更新完成.'
   end
   def online
     @store.up!

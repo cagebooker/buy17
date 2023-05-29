@@ -110,11 +110,13 @@
       </div>
       <div class="box background-black border-white height-fix-2">
         <% @purchases_done.each do |purchase| %>
-          <div class="box background-light-gray">
-            <span class="state-f"><%= t(:已完成) %></span>
-            <span><%= t(:訂單編號) %>： <%= purchase.id %></span>
-            <span><%= t(:總金額) %>： <%= purchase.total_income %></span>
-          </div>
+          <% if purchase.total_income != 0 %>
+            <div class="box background-light-gray">
+              <span class="state-f"><%= t(:已完成) %></span>
+              <span><%= t(:訂單編號) %>： <%= purchase.id %></span>
+              <span><%= t(:總金額) %>： <%= purchase.total_income %></span>
+            </div>`
+          <% end %>
         <% end %>
       </div>
     </div>
