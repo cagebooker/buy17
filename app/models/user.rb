@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
   has_many :stores 
   has_many :orders
+  has_many :postits
 
   has_many :messages
 

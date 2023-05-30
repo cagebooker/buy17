@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: { 
+    registrations: 'users/registrations',
     sessions: 'users/sessions',  
     omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
   # setMode
   get '/set_mode', to: 'application#set_mode'
   post '/set_mode', to: 'application#change_mode'
+  # 便利貼牆
+  resources :postits
 
   namespace :admin do 
     resources :stores do 

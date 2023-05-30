@@ -4,6 +4,19 @@ $gray : #d9d9da;
 $black: #2b2b2b;
 $white:#F1F1F1;
 
+$width: 60px;
+$colorBlack: #3E3A39;
+$colorYellow: #F0E27F;
+$colorPink: #EBB3D0;
+$colorGreen: #B3D250;
+$colorOrange: #F4A443;
+$colorBlue: #48AFD9;
+
+@mixin size($w, $h){
+    width: $w;
+    height: $h;
+}
+
 body{
     // padding-bottom: 100px !important;
     min-height: 100vh;
@@ -81,6 +94,9 @@ body{
         border-color: $blue;
         color: #fff !important;
     }
+}
+.title-ml{
+    transform: translate(120px);
 }
 .is-yy{
     background-color: transparent;
@@ -914,4 +930,226 @@ body{
 }
 .pform{
     transition: 0.3s;
+}
+.postitBtn{
+    position: fixed;
+    bottom: 80px;
+    left: 80px;
+    width: 30px;
+    height: 30px;
+    // background-color: #06C34D;
+    cursor: pointer;
+    .fa-chess-board{
+        transition: 0.3s;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .postitBoard{
+        border: 1px solid gray;
+        width: 1050px;
+        height: 600px;
+        position: absolute;
+        top: -500px;
+        left: 40px;
+    }
+}
+.btn-kg{
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    background-color: transparent;
+    border: 1px solid #1F2124;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+    border-radius: 5px;
+    bottom: 124px;
+    left: 82px;
+
+    transform: scale(1.2);
+    // pointer-events: none;
+    &:hover{
+        transform: scale(1.4);
+    }
+    .fa-xmark{
+        color:#1F2124;
+    }
+}
+.mr-nav-btn{
+    // margin-right: 50px;
+}
+/* postitBoard */
+.postitBoard{
+    height: calc(100% - 56px);
+    background-color: rgba(#494343, 0.95);
+    border: 2px solid #9c9c9c;
+    border-radius: 3px;
+    overflow-y: hidden;
+    transition: 1s;
+    z-index: 100;
+}
+.postit{
+  @include size(200px,200px);
+//   font-size: calc( 240px / 4 - 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $colorYellow;
+  letter-spacing: 6px;
+  font-weight: 500;
+  padding: 10px;
+  background-clip: content-box;
+  border: 1px solid transparent;
+  cursor: pointer;
+//   box-shadow: 8px 6px 20px rgb(black, 0.3);
+  position: absolute;
+  transition: background-color 0.3s, border 0.3s;
+  &:hover{
+    border: 1px solid white;
+  }
+  .text{
+    pointer-events: none;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 80%;
+    text-align: center;
+    &:focus{
+        border-bottom: 1px solid gray;
+    }
+  }
+  .colorList{
+    position: absolute;
+    bottom: -60px;
+    button{
+        height: 30px;
+        width: 30px;
+    }
+    .btn{
+        position: relative;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+        transition: 0.3s;
+        top: 2px;
+
+        transform: scale(1.2);
+        // pointer-events: none;
+        &:hover{
+            transform: scale(1.4);
+        }
+    }
+    .btn-close{
+        position: relative;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+        transition: 0.3s;
+        top: 2px;
+        right: 20px;
+        transform: scale(1.2);
+        // pointer-events: none;
+        &:hover{
+            transform: scale(1.4);
+        }
+    }
+  }
+  .fa-pencil, .fa-trash-can{
+    pointer-events: none;
+  }
+}
+
+.dataset{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    .btn{
+        position: relative;
+        background-color: transparent;
+        // border: none;
+        border: 1px solid white;
+        width:26px;
+        height:26px;
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: 0.3s;
+        top: -5px;
+        transform: scale(1.2);
+        // pointer-events: none;
+        &:hover{
+            transform: scale(1.4) rotate(90deg);
+            color:#F0E27F;
+            border: 1px solid #F0E27F;
+        }
+    }
+}
+.colorList{
+    display: flex;
+    left: 10px;
+    top: 203px;
+    .block{
+        display: inline-block;
+        @include size(20px, 20px);
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+        &:hover{
+            transform: scale(1.2);
+        }
+    }    
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+.v-line{
+    height: 1px;
+    width: calc(100% - 4px);
+    border-bottom: 1px solid #767575;
+    box-shadow: 0px 0px 2px 0px #666666;
+    position: absolute;
+    top: $width;
+    left: 2px
+}
+.v-line:nth-child(1){
+    top: $width*2;
+}
+.v-line:nth-child(2){
+    top: $width*3;
+}
+.v-line:nth-child(3){
+    top: $width*4;
+}
+.v-line:nth-child(4){
+    top: $width*5
+}
+.v-line:nth-child(5){
+    top: $width*6;
+}
+.v-line:nth-child(6){
+    top: $width*7;
+}
+.v-line:nth-child(7){
+    top: $width*8;
+}
+.v-line:nth-child(8){
+    top: $width*9;
+}
+.v-line:nth-child(9){
+    top: $width*10;
+}
+.v-line:nth-child(10){
+    top: $width*11;
 }

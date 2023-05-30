@@ -4,28 +4,40 @@
   </div>
   <div class="columns">
     <div class="column is-9">
-      <% current_user.messages.unread_messages.each do |msg| %>
-        <%= link_to root_path,class:'' do %>
-          <div class="box  mb-2">
-            <%= msg.content %> | 
-            <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
-          </div>
-        <% end %>
-      <% end %>
+      
       <table class="table is-fullwidth is-hoverable dark-table">
         <thead>
           <tr>
             <th>您收到的訊息</th>
+            <th>狀態</th>
             <th>時間</th>
           </tr>
         </thead>
         <tbody>
+          <% current_user.messages.unread_messages.each do |msg| %>
+            <tr>
+              <td>
+                <%= link_to message_read_message_path(msg),method: :post,class:'' do %>
+                  <%= msg.content %>
+                <% end %>  
+              </td>
+              <td>
+                未讀
+              </td>
+              <td>
+                <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
+              </td>
+            </tr>
+          <% end %>
           <% current_user.messages.read_messages.each do |msg| %>
             <tr>
               <td>
                 <%= link_to root_path,class:'' do %>
                   <%= msg.content %> 
                 <% end %>
+              </td>
+              <td>
+                已讀
               </td>
               <td>
                 <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>

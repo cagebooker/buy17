@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   def read_message
     @message = Message.find(params[:message_id])
     @message.read_message!
-    
+    redirect_to root_path
   end
   def send_message
     #還需要判別是不是已經在群組裡面

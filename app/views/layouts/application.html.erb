@@ -14,6 +14,53 @@
     <div id="board">
       <%= render 'shared/navbar' %>
       <%= yield %>
+      <button class="btn-kg" @click="closeBoard "v-if="postitclose" >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="postitBtn" @click="showBoard">
+        <i class="fa-solid fa-chess-board fa-2xl"></i>
+        <div class="postitBoard" v-if="postitboard">
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <div class="v-line"></div>
+          <Transition-Group name="fade" tag="ul">   
+            <li class="postit" v-for="(p, pid) in postits" :key="pid" :style="postitCss(p)" @mousedown="selectId($event, pid, p)">
+              
+              <input class="text" v-model="p.content" ref="name1" :style="inputCss(p)" @change="changeText($event,p)">
+              </input>
+              <div class="colorList">
+                <div class="block" v-for="color in colorList" :style="{backgroundColor: getColor(color.name)}" 
+                  @click="changeColor(p,color)">
+                </div> 
+                <button class="btn" @click="focusOn(pid)">
+                  <i class="fa-solid fa-pencil"></i>
+                </button>
+                
+                <button class="btn" @click="deletePost(p.id,pid)">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div> 
+            </li>
+          </Transition-Group>
+          
+          <ul class="dataset">
+            
+            <button class="btn" @click="addPost" >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            
+          </ul>
+         
+        </div>
+      </div>
     </div>
     <%= render 'shared/flash' if notice %>
     <%= render 'shared/footer' %>
